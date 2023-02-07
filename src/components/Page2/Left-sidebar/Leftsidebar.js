@@ -26,7 +26,7 @@ const Leftsidebar = () => {
       </button>
       <aside
         id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-#e3f2f3 border-r border-gray-200 sm:translate-x-0 #e3f2f3:bg-gray-800 #e3f2f3:border-gray-700"
+        class="fixed top-11 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-#e3f2f3 border-r border-gray-200 sm:translate-x-0 #e3f2f3:bg-gray-800 #e3f2f3:border-gray-700"
         aria-label="Sidebar"
       >
         <div

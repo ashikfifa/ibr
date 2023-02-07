@@ -1,19 +1,11 @@
-input {
-    position: absolute;
-    font-size: 50px;
-    opacity: 0;
-    right: 0;
-    top: 0;
-  }
-
-  #btn-aic {
-    outline: 1px dotted;
-    outline-color: #024f4b ;
-    outline: 5px auto -webkit-focus-ring-color;
-    padding: 3px 15px;
-  }
-  #btn-up{
-    padding: 12px 97px;
-    background-color: #024f4b;
-    color: white;
-  }
+#btn-aic {
+  outline: 1px dotted;
+  outline-color: #024f4b;
+  outline: 5px auto -webkit-focus-ring-color;
+  padding: 3px 15px;
+}
+#btn-up {
+  padding: 12px 97px;
+  background-color: #024f4b;
+  color: white;
+}
