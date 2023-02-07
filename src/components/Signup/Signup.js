@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "../Home/Navbar/Navbar";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ const SignUp = () => {
 
   return (
     <>
+    <Navbar/>
       <div className="bg-gray-50 h-screen flex items-center justify-center">
         <div className="w-96 bg-white shadow-md rounded p-6">
           <form onSubmit={handleSubmit}>

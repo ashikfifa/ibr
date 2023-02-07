@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../Home/Navbar/Navbar";
 
 const Login = () => {
@@ -59,9 +60,10 @@ const Login = () => {
             <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded-full hover:bg-indigo-600">
               Login
             </button>
+            <Link to="/sign-up">
             <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded-full hover:bg-indigo-600">
               Sign up
-            </button>
+            </button></Link>
           </div>
         </form>
       </div>
