@@ -2,43 +2,63 @@ import React, { useState } from "react";
 import imgModel from "./img/modelimg.png";
 
 const MiddleImage = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const images = [
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    { imgModel },
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    "https://cutoutwiz.com/assets/images/view-professional-modern-camera-screen-tripod.jpg",
-    // Add more images here
+    "image1.jpg",
+    "image2.jpg",
+    "image3.jpg",
+    "image4.jpg",
+    "image5.jpg",
+    "image6.jpg",
+    "image7.jpg",
+    "image8.jpg",
+    "image9.jpg",
+    "image10.jpg",
+    "image11.jpg",
+    "image12.jpg",
+    "image13.jpg",
+    "image14.jpg",
+    "image15.jpg",
   ];
+  const imagesPerPage = 6;
+  const totalPages = Math.ceil(images.length / imagesPerPage);
+  const startIndex = (currentPage - 1) * imagesPerPage;
+  const endIndex = startIndex + imagesPerPage;
+  const currentImages = images.slice(startIndex, endIndex);
 
   return (
-    <div className="container mx-auto mt-11">
+    <div>
       <div className="flex flex-wrap">
-        {images.slice(currentImage, currentImage + 3).map((image, index) => (
-          <img key={image} src={image} className="w-full sm:w-1/2 lg:w-1/3" />
+        {currentImages.map((image) => (
+          <div className="w-2/6" key={image}>
+            <img src={image} alt={image} className="w-full h-64 object-cover" />
+          </div>
         ))}
       </div>
-      <div className="flex justify-center mt-6">
+      <div className="flex justify-between mt-4">
         <button
-          className="bg-gray-300 px-4 py-2"
-          onClick={() =>
-            setCurrentImage((currentImage - 1 + images.length) % images.length)
-          }
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
         >
-          Previous
+          Prev
         </button>
+        <p className="text-center">
+          Page {currentPage} of {totalPages}
+        </p>
         <button
-          className="bg-gray-300 px-4 py-2 ml-6"
-          onClick={() => setCurrentImage((currentImage + 1) % images.length)}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
         >
           Next
         </button>
       </div>
+      <div className="flex justify-center">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Process
+      </button>
+    </div>
     </div>
   );
 };
