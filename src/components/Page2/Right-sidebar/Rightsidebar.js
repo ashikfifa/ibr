@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 const Rightsidebar = () => {
+  const [checked, setChecked] = useState(true);
   return (
     <div>
       <button
@@ -25,11 +28,11 @@ const Rightsidebar = () => {
       </button>
       <aside
         id="logo-sidebar"
-        class="fixed top-11 right-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-#e3f2f3 border-r border-gray-200 sm:translate-x-0 #e3f2f3:bg-gray-800 #e3f2f3:border-gray-700"
+        class=" top-0 right-0 z-40 w-64  h-screen  transition-transform -translate-x-full bg-#e3f2f3 border-r border-gray-200 sm:translate-x-0 #e3f2f3:bg-gray-800 #e3f2f3:border-gray-700 border-opacity-0"
         aria-label="Sidebar"
       >
         <div
-          class="h-full px-3 pb-4 overflow-y-auto bg-#e3f2f3 #e3f2f3:bg-#e3f2f3-800"
+          class="h-full w-52 ml-10  pb-4 overflow-y-auto "
           style={{ backgroundColor: "#e3f2f3" }}
         >
           <ul class="space-y-2">
@@ -38,8 +41,15 @@ const Rightsidebar = () => {
                 href="#"
                 class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
               >
-                <input type="checkbox" id="1" />
-                <label for="1" class="ml-3">Bg Removal</label>
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => setChecked(!checked)}
+                  id="1"
+                />
+                <label for="1" class="ml-3">
+                  Bg Removal
+                </label>
               </a>
             </li>
             <li>
@@ -49,9 +59,6 @@ const Rightsidebar = () => {
               >
                 <input type="checkbox" id="2" />
                 <span class="flex-1 ml-3 #e3f2f3space-nowrap">Liquify</span>
-                <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full #e3f2f3:bg-gray-700 #e3f2f3:text-gray-300">
-                  Pro
-                </span>
               </a>
             </li>
             <li>
@@ -61,9 +68,6 @@ const Rightsidebar = () => {
               >
                 <input type="checkbox" id="3" />
                 <span class="flex-1 ml-3 #e3f2f3space-nowrap">Retouch</span>
-                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full #e3f2f3:bg-blue-900 #e3f2f3:text-blue-300">
-                  3
-                </span>
               </a>
             </li>
             <li>

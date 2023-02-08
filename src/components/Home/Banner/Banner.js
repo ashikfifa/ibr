@@ -26,9 +26,11 @@ const Banner = () => {
               START HERE
             </p>
             <div className="text-center">
-             <Link to="/file-uploads"> <button style={{ marginTop: "3%" }} id="btn-up">
-                Upload
-              </button>
+              <Link to="/file-uploads">
+                {" "}
+                <button style={{ marginTop: "3%" }} id="btn-up">
+                  Upload
+                </button>
               </Link>
               <br />
               <br />
