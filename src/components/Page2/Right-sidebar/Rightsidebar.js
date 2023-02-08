@@ -39,7 +39,7 @@ const Rightsidebar = () => {
                 class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
               >
                 <input type="checkbox" id="1" />
-                <span class="ml-3">Bg Removal</span>{" "}
+                <label for="1" class="ml-3">Bg Removal</label>
               </a>
             </li>
             <li>
