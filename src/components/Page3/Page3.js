@@ -1,29 +1,26 @@
 import Navbar from "../Home/Navbar/Navbar";
-import Toggle from "../Toggle/Toggle";
-import Imageupload from "./Imageupload/Imageupload";
+import Leftsidebar from "../Page2/Left-sidebar/Leftsidebar";
+import Rightsidebar from "../Page2/Right-sidebar/Rightsidebar";
+import UpdatedImage from "./UpdatedImage";
 
-import Leftsidebar from "./Left-sidebar/Leftsidebar";
-import Rightsidebar from "./Right-sidebar/Rightsidebar";
-
-function Page2() {
+const Page3 = () => {
   return (
-    <div className="Page2">
+    <>
       <Navbar />
-      <Toggle></Toggle>
       <div class="grid sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-1">
         <div class="...">
           <Leftsidebar />
         </div>
 
         <div class="col-span-3 ...">
-          <Imageupload />
+          <UpdatedImage />
         </div>
         <div class="...">
           <Rightsidebar />
         </div>
       </div>
-    </div>
+    </>
   );
-}
+};
 
-export default Page2;
+export default Page3;

@@ -1,15 +1,15 @@
 #middleImageWrap {
-    position: relative;
+  position: relative;
 }
 #uploadBtn {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    margin-top: 50%;
-    margin-left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin-top: 40%;
+  margin-left: 30%;
 }
 #filepicker {
-    background: #e3f2f3;
-    border-radius: 4px;
-    width: 276px;
-    padding: 30px;
+  background: #e3f2f3;
+  border-radius: 4px;
+  width: 276px;
+  padding: 30px;
 }

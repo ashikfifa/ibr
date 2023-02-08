@@ -80,7 +80,9 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="/log-in">
-                <button id="btn-signup">SIGN UP</button>
+                  <button id="btn-signup" className="rounded-md">
+                    SIGN UP
+                  </button>
                 </Link>
               </li>
             </ul>
