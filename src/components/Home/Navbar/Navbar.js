@@ -3,22 +3,12 @@ import imgTrain from "./img/train.svg";
 import "./navbar.css";
 const Navbar = () => {
   return (
-    <>
-      {/* <div className="container mx-auto ">
-        <div style={{ position: "absolute" }}>
-          <img src={imgTrain} />
-        </div>{" "}
-      </div> */}
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded light:bg-gray-900">
+    <div>
+      <nav className="bg-white border-gray-200 px-2 sm:px-4 shadow-md rounded light:bg-gray-900">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <Link to="/" className="flex items-center">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-6 mr-3 sm:h-9"
-              alt="Flowbite Logo"
-            />
             <span className="self-center text-xl font-semibold whitespace-nowrap light:text-white">
-              Flowbite
+              Retouch.ai
             </span>
           </Link>
           <button
@@ -44,14 +34,14 @@ const Navbar = () => {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white light:bg-gray-800 md:light:bg-gray-900 light:border-gray-700">
+            <ul className="flex flex-col px-4 py-2 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white light:bg-gray-800 md:light:bg-gray-900 light:border-gray-700">
               <li>
                 <a
                   href="#"
                   className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 light:text-white"
                   aria-current="page"
                 >
-                  Services
+                  Home
                 </a>
               </li>
               <li>
@@ -72,7 +62,7 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/price"
                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 light:text-gray-400 md:light:hover:text-white light:hover:bg-gray-700 light:hover:text-white md:light:hover:bg-transparent"
                 >
                   Pricing
@@ -89,7 +79,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 

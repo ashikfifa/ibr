@@ -41,6 +41,20 @@ const Banner = () => {
                   <u>AI-Professionals Collaboratio</u>
                 </strong>
               </p>
+              <div className="flex mt-10 ml-20 gap-6">
+                <button className="rounded-full h-20 w-20  bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+                  Liquify
+                </button>
+                <button className="rounded-full h-20 w-20  bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+                  Recolor
+                </button>
+                <button className="rounded-full h-20 w-20  bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+                  Clipping
+                </button>
+                <button className="rounded-full h-20 w-20 bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+                  Masking
+                </button>
+              </div>
             </div>
           </div>
         </div>
