@@ -9,13 +9,13 @@ function Imageupload() {
   const [currentPage, setCurrentPage] = useState(1);
   const [fileInfo, setFileInfo] = useState([]);
   const [imageShow, setImageShow] = useState([]);
+  const [imgUrl, setimgUrl] = useState();
   const [getMainFile, setMainFile] = useContext(FileContextManager);
-  const itemsPerPage = 8;
+  const itemsPerPage = 32;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentImages = imageShow.slice(indexOfFirstItem, indexOfLastItem);
-
   const uploadFl = (e) => {
     const newFile = e.target.files;
 
@@ -58,6 +58,11 @@ function Imageupload() {
         }
       });
   };
+  const [showImage, setShowImage] = useState(false);
+
+  const handleClose = () => {
+    setShowImage(false);
+  };
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -67,8 +72,13 @@ function Imageupload() {
     setCurrentPage(currentPage - 1);
   };
 
+  const viewImg = (img) => {
+    setimgUrl(img);
+    setShowImage(true);
+  };
+
   return (
-    <div id="middleImageWrap " className="mt-10">
+    <div id="middleImageWrap " className="mt-1">
       {imageShow.length == 0 && (
         <div id="uploadBtn">
           <input
@@ -84,19 +94,58 @@ function Imageupload() {
       )}
       {imageShow.length > 0 && (
         <>
-          <div className="flex flex-wrap">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-4">
             {currentImages.map((image, index) => (
-              <div key={index} className="w-1/4 p-2">
-                <div
-                  style={{
-                    backgroundImage: `url(${image})`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    width: "200px",
-                    height: "200px",
-                    display: "inline-block",
-                  }}
-                />
+              <div key={index}>
+                <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
+                  <div
+                    onClick={() => viewImg(image)}
+                    style={{
+                      backgroundImage: `url(${image})`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      width: "100%",
+                      cursor: "pointer",
+                      height: "80px",
+                    }}
+                  />
+                  {showImage && (
+                    <div
+                      style={{
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        zIndex: 9,
+                        background: "rgba(0, 0, 0, 0.5)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        src={imgUrl}
+                        style={{ maxWidth: "90%", maxHeight: "90%" }}
+                      />
+                      <button
+                        onClick={handleClose}
+                        style={{
+                          position: "absolute",
+                          top: 20,
+                          right: 20,
+                          background: "white",
+                          border: "none",
+                          padding: "10px 15px",
+                          borderRadius: "50%",
+                          cursor: "pointer",
+                        }}
+                      >
+                        X
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
