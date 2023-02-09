@@ -1,11 +1,11 @@
 import fileicon from "./img/file-icon.svg";
 import {
-  FcDeleteRow,
-  FcDocument,
-  FcFilledFilter,
-  FcFolder,
-  FcSlrBackSide,
-} from "react-icons/fc";
+  BiFile,
+  BiFilterAlt,
+  BiFolderOpen,
+  BiWindowAlt,
+  BiXCircle,
+} from "react-icons/bi";
 const Leftsidebar = () => {
   return (
     <div>
@@ -33,58 +33,58 @@ const Leftsidebar = () => {
       </button>
       <aside
         id="logo-sidebar"
-        class=" top-0 left-0 z-40 w-64 h-screen  transition-transform -translate-x-full bg-#e3f2f3 border-r border-gray-200 sm:translate-x-0 #e3f2f3:bg-gray-800 border-opacity-0"
+        class=" top-0 left-0 z-40 w-64 h-screen  transition-transform -translate-x-full  border-gray-200 sm:translate-x-0 border-opacity-0"
         aria-label="Sidebar"
       >
         <div
-          class="w-52 h-full  pb-4  overflow-y-auto "
-          style={{ backgroundColor: "#e3f2f3" }}
+          class="w-32  h-full  pb-4  overflow-y-auto shadow-2xl "
+          // style={{ backgroundColor: "#e3f2f3" }}
         >
           <ul class="space-y-2">
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900 hover:border-r-2 hover:border-r-lime-400 hover:bg-gray-100 "
               >
-                <FcDocument className="h-5 w-5"></FcDocument>
-                <span class="ml-3">File</span>
+                <BiFile className="h-6 w-6"></BiFile>
+                <span>File</span>
               </a>
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900  hover:bg-gray-100 hover:border-r-2 hover:border-r-lime-400"
               >
-                <FcFolder className="h-5 w-5"></FcFolder>
-                <span class="flex-1 ml-3 #e3f2f3space-nowrap">Folder</span>
+                <BiFolderOpen className="h-6 w-6"></BiFolderOpen>
+                <span class="flex-1  #e3f2f3space-nowrap">Folder</span>
               </a>
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900 hover:border-r-2 hover:border-r-lime-400 hover:bg-gray-100 "
               >
-                <FcSlrBackSide className="h-5 w-5"></FcSlrBackSide>
-                <span class="flex-1 ml-3 #e3f2f3space-nowrap">FTP</span>
+                <BiWindowAlt className="h-6 w-6"></BiWindowAlt>
+                <span class="flex-1  #e3f2f3space-nowrap">FTP</span>
               </a>
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center hover:border-r-2 hover:border-r-lime-400 p-2 text-base flex flex-col font-normal text-gray-900  hover:bg-gray-100 "
               >
-                <FcFilledFilter className="h-5 w-5"></FcFilledFilter>
+                <BiFilterAlt className="h-6 w-6"></BiFilterAlt>
 
-                <span class="flex-1 ml-3 #e3f2f3space-nowrap">Filter</span>
+                <span class="flex-1  #e3f2f3space-nowrap">Filter</span>
               </a>
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 flex flex-col text-base font-normal  text-gray-900   hover:bg-gray-100 hover:border-r-2 hover:border-r-lime-400 "
               >
-                <FcDeleteRow className="h-5 w-5"></FcDeleteRow>
-                <span class="flex-1 ml-3 #e3f2f3space-nowrap">Clear</span>
+                <BiXCircle className="h-6 w-6"></BiXCircle>
+                <span class="flex-1  #e3f2f3space-nowrap">Clear</span>
               </a>
             </li>
           </ul>

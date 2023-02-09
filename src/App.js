@@ -5,6 +5,7 @@ import Signup from "./components/Signup/Signup";
 import Login from "./components/Signup/Login";
 import { Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
+import PriceCard from "./components/PriceCard/PriceCard";
 
 export const FileContextManager = createContext();
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Navigation />} /> */}
           <Route path="/" element={<Home />} />
+          <Route path="/price" element={<PriceCard />} />
           <Route path="/file-uploads" element={<Page2 />} />
           <Route path="/processed-img" element={<Page3 />} />
           <Route path="/log-in" element={<Login />} />

@@ -4,14 +4,14 @@ import ViewDwnld from "./ViewDwnld";
 const UpdatedImage = () => {
   return (
     <>
-      <div class="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-1">
-        <div style={{ position: "relative" }}>
-          <img src={hoody} style={{ position: "relative" }} />
-          <input
-            type="checkbox"
-            style={{ position: "absolute", top: 0, left: 0 }}
-          />
-          <ViewDwnld />
+      <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-1">
+        <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
+          <a href="#">
+            <img className="rounded-t-lg" src={hoody} alt="" />
+          </a>
+          <div className="p-3">
+            <ViewDwnld />
+          </div>
         </div>
       </div>
     </>
