@@ -44,25 +44,25 @@ const Leftsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900 hover:border-r-2 hover:border-r-yellow-400 hover:bg-gray-100 "
+                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900 hover:border-r-2 hover:border-r-lime-400 hover:bg-gray-100 "
               >
                 <BiFile className="h-6 w-6"></BiFile>
                 <span>File</span>
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900  hover:bg-gray-100 hover:border-r-2 hover:border-r-yellow-400"
+              <div
+                onClick={() => document.querySelector("#filepicker").click()}
+                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900  hover:bg-gray-100 hover:border-r-2 hover:border-r-lime-400"
               >
                 <BiFolderOpen className="h-6 w-6"></BiFolderOpen>
                 <span class="flex-1  #e3f2f3space-nowrap">Folder</span>
-              </a>
+              </div>
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900 hover:border-r-2 hover:border-r-yellow-400 hover:bg-gray-100 "
+                class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900 hover:border-r-2 hover:border-r-lime-400 hover:bg-gray-100 "
               >
                 <BiWindowAlt className="h-6 w-6"></BiWindowAlt>
                 <span class="flex-1  #e3f2f3space-nowrap">FTP</span>
@@ -71,7 +71,7 @@ const Leftsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center hover:border-r-2 hover:border-r-yellow-400 p-2 text-base flex flex-col font-normal text-gray-900  hover:bg-gray-100 "
+                class="flex items-center hover:border-r-2 hover:border-r-lime-400 p-2 text-base flex flex-col font-normal text-gray-900  hover:bg-gray-100 "
               >
                 <BiFilterAlt className="h-6 w-6"></BiFilterAlt>
 
@@ -81,7 +81,7 @@ const Leftsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 flex flex-col text-base font-normal  text-gray-900   hover:bg-gray-100 hover:border-r-2 hover:border-r-yellow-400 "
+                class="flex items-center p-2 flex flex-col text-base font-normal  text-gray-900   hover:bg-gray-100 hover:border-r-2 hover:border-r-lime-400 "
               >
                 <BiXCircle className="h-6 w-6"></BiXCircle>
                 <span class="flex-1  #e3f2f3space-nowrap">Clear</span>
