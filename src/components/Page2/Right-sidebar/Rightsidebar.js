@@ -9,7 +9,7 @@ const Rightsidebar = () => {
         data-drawer-toggle="sidebar-multi-level-sidebar"
         aria-controls="sidebar-multi-level-sidebar"
         type="button"
-        class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 #e3f2f3:text-gray-400 #e3f2f3:hover:bg-gray-700 #e3f2f3:focus:ring-gray-600"
+        class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 #e3f2f3:text-gray-300 #e3f2f3:hover:bg-gray-700 #e3f2f3:focus:ring-gray-600"
       >
         <span class="sr-only">Open sidebar</span>
         <svg
@@ -40,7 +40,7 @@ const Rightsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-yellow-400 text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-yellow-300 text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
               >
                 <input
                   type="checkbox"
@@ -57,7 +57,7 @@ const Rightsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base hover:border-r-2 hover:border-r-yellow-400 font-normal text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base hover:border-r-2 hover:border-r-yellow-300 font-normal text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
               >
                 <input type="checkbox" id="2" />
                 <span class="flex-1 ml-3 #e3f2f3space-nowrap">Liquify</span>
@@ -66,7 +66,7 @@ const Rightsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base hover:border-r-2 hover:border-r-yellow-400 font-normal text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base hover:border-r-2 hover:border-r-yellow-300 font-normal text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
               >
                 <input type="checkbox" id="3" />
                 <span class="flex-1 ml-3 #e3f2f3space-nowrap">Retouch</span>
@@ -75,7 +75,7 @@ const Rightsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-yellow-400 text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-yellow-300 text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
               >
                 <input type="checkbox" id="4" />
                 <span class="flex-1 ml-3 #e3f2f3space-nowrap">Clipping</span>
@@ -84,7 +84,7 @@ const Rightsidebar = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-yellow-400 text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                class="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-yellow-300 text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
               >
                 <input type="checkbox" id="5" />
                 <span class="flex-1 ml-3 #e3f2f3space-nowrap">Masking</span>

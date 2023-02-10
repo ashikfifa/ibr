@@ -62,12 +62,12 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="/price"
+                <Link
+                  to="/price"
                   className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 light:text-gray-400 md:light:hover:text-white light:hover:bg-gray-700 light:hover:text-white md:light:hover:bg-transparent"
                 >
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
                 <Link to="/log-in">
