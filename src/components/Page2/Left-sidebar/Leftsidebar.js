@@ -51,13 +51,13 @@ const Leftsidebar = () => {
               </a>
             </li>
             <li>
-              <a
-                href="#"
+              <div
+                onClick={() => document.querySelector("#filepicker").click()}
                 class="flex items-center p-2 text-base flex flex-col font-normal text-gray-900  hover:bg-gray-100 hover:border-r-2 hover:border-r-lime-400"
               >
                 <BiFolderOpen className="h-6 w-6"></BiFolderOpen>
                 <span class="flex-1  #e3f2f3space-nowrap">Folder</span>
-              </a>
+              </div>
             </li>
             <li>
               <a

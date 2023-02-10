@@ -7,7 +7,7 @@ const Page3 = () => {
   return (
     <>
       <Navbar />
-      <div class="grid sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-1">
+      <div class="grid sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-5 gap-1">
         <div class="...">
           <Leftsidebar />
         </div>

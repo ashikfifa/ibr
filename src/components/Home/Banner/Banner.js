@@ -3,21 +3,22 @@ import "./banner.css";
 import imgModel from "./img/recolor-02.png";
 const Banner = () => {
   return (
-    <div style={{ backgroundColor: "#e3f2f3", height: "100vh" }}>
+    <div className="bg-yellow-400" style={{ height: "100vh" }}>
       <div className="container mx-auto ">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div className="..">
             <div style={{ position: "" }}>
               {" "}
-              <img src={imgModel} />
+              <img src={imgModel} alt="model" />
             </div>
           </div>
           <div className="..">
             <p
+              className="text-white"
               style={{
                 padding: "18%",
                 paddingBottom: "0",
-                color: "#125a31",
+
                 fontWeight: "700",
                 fontSize: "30px",
                 textAlign: "center",
@@ -25,33 +26,39 @@ const Banner = () => {
             >
               START HERE
             </p>
-            <div className="text-center">
+            <div className="text-center ">
               <Link to="/file-uploads">
                 {" "}
-                <button style={{ marginTop: "3%" }} id="btn-up">
-                  Upload
+                <button
+                  className="rounded-lg font-bold text-white justify-center bg-black hover:text-black hover:bg-white "
+                  style={{ marginTop: "3%" }}
+                  id="btn-up"
+                >
+                  UPLOAD
                 </button>
               </Link>
               <br />
               <br />
-              <button id="btn-aic">AI-Professionals Collaboration</button>
-              <p style={{ marginTop: "4%" }}>
+              <button id="btn-aic" className="text-white text-2xl">
+                AI-Professionals Collaboration
+              </button>
+              <p className="text-white text-lg" style={{ marginTop: "4%" }}>
                 Obtain Services at a Lower Cost with{" "}
-                <strong>
+                <strong className="text-white">
                   <u>AI-Professionals Collaboratio</u>
                 </strong>
               </p>
-              <div className="flex mt-10 ml-20 gap-6">
-                <button className="rounded-full h-20 w-20  bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+              <div className=" md:flex lg:flex  lg:mt-10 lg:ml-24 lg:gap-5">
+                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
                   Liquify
                 </button>
-                <button className="rounded-full h-20 w-20  bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
                   Recolor
                 </button>
-                <button className="rounded-full h-20 w-20  bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
                   Clipping
                 </button>
-                <button className="rounded-full h-20 w-20 bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-400 shadow-lg to-gray-400  hover:translate-y-px">
+                <button className="rounded-full  h-20 w-20  font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
                   Masking
                 </button>
               </div>
