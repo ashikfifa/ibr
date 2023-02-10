@@ -4,60 +4,122 @@ import "./style.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import UpdatedImage from "../../Page3/UpdatedImage";
 
 function Imageupload() {
   const [currentPage, setCurrentPage] = useState(1);
   const [fileInfo, setFileInfo] = useState([]);
   const [imageShow, setImageShow] = useState([]);
   const [imgUrl, setimgUrl] = useState();
+  const [actionStatus, setActionStatus] = useState("");
+  const [getAfterBeforeImg, setAfterBeforeImg] = useState([]);
+  const [LoadProgress, setLoadProgress] = useState(0); 
+
   const [getMainFile, setMainFile] = useContext(FileContextManager);
   const itemsPerPage = 32;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentImages = imageShow.slice(indexOfFirstItem, indexOfLastItem);
+
   const uploadFl = (e) => {
     const newFile = e.target.files;
 
     setMainFile(newFile);
+    setFileInfo([]);
+    setImageShow([]); 
+    setLoadProgress(0); 
+
+    let i = 0; 
     for (const file of newFile) {
+      i++; 
+      console.log(Math.round((100/newFile.length)*i))
+      setLoadProgress(Math.round((100/newFile.length)*i)); 
+
       if (file.type == "image/jpeg" || file.type == "image/png") {
         setFileInfo((fileInfo) => [...fileInfo, file]);
         const imageUrl = URL.createObjectURL(file);
         setImageShow((imageShow) => [...imageShow, imageUrl]);
       }
+
     }
   };
 
+  const uniqueOrderId = (length) => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+  }
+
+  const getFileType = (fileType) => {
+    const fileTypeIs = fileType.type.split("/");
+    return fileTypeIs[1];
+  }
+
   const processImagesAi = () => {
+
     toast.success("Items Process Successfully!", {
       position: toast.POSITION.TOP_RIGHT,
     });
-    console.log(getMainFile);
-    let input = fileInfo;
-    console.log(input[0]);
-    let data = new FormData();
-    data.append("order_no", "12455");
-    data.append("file_path", "myimage/path/");
-    data.append("api_key", "Agfd11384HSOTITYH@84584DHFDgsdg3746$$FGDSF7hgdh");
-    data.append("file", input[0]);
-    data.append("return_public_url", "True");
-    data.append("output_format", "png");
+    setActionStatus("process");
 
-    fetch("http://27.147.191.97:8008/upload", {
-      method: "POST",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
+    // let input = fileInfo;
+    const order_id = uniqueOrderId(7);
+
+    fileInfo.map((img_file, index) => {
+
+      const filePath = img_file.webkitRelativePath;
+
+      const imgType = getFileType(img_file);
+
+      let data = new FormData();
+      data.append("order_no", order_id);
+      data.append("file_path", "filePath/psdfspd/");
+      data.append("api_key", "Agfd11384HSOTITYH@84584DHFDgsdg3746$$FGDSF7hgdh");
+      data.append("file", img_file);
+      data.append("return_public_url", "True");
+      data.append("output_format", "png");
+
+      dataTransfer(data)
+
+      /*
+      fetch("http://27.147.191.97:8008/upload", {
+        method: "POST",
+        body: data,
       })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
+        .then((res) => res.json())
+        .then((result) => {
+          setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, result]);
+          console.log(result);
+        })
+        .catch((err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+*/
+    })
   };
+
+  const dataTransfer = async formData =>{
+    try {
+      const response = await fetch("http://27.147.191.97:8008/upload", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+      setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, data]);
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
   const [showImage, setShowImage] = useState(false);
 
   const handleClose = () => {
@@ -79,20 +141,17 @@ function Imageupload() {
 
   return (
     <div id="middleImageWrap " className="mt-1">
-      {imageShow.length == 0 && (
-        <div id="uploadBtn">
-          <input
-            onChange={uploadFl}
-            type="file"
-            id="filepicker"
-            name="fileList"
-            directory=""
-            webkitdirectory=""
-            accept="image/png"
-          />
-        </div>
-      )}
-      {imageShow.length > 0 && (
+      <input
+        onChange={uploadFl}
+        type="file"
+        id="filepicker"
+        name="fileList"
+        directory=""
+        webkitdirectory=""
+        accept="image/png"
+      />
+
+      {imageShow.length > 0 && actionStatus == "" && (
         <>
           <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-4">
             {currentImages.map((image, index) => (
@@ -171,27 +230,31 @@ function Imageupload() {
             <div class=" w-32 h-4 ml-10 bg-gray-200 rounded-full dark:bg-gray-700">
               <div
                 class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-                style={{ width: "45%" }}
+                style={{ width: `${LoadProgress}%` }}
               >
-                {" "}
-                45%
+                {LoadProgress}%
               </div>
             </div>
           </div>
 
           <div className="flex justify-center items-center">
-            <Link to="/processed-img">
-              <button
-                onClick={processImagesAi}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Process
-              </button>
-            </Link>
+            <button
+              onClick={processImagesAi}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Process
+            </button>
             <ToastContainer />
           </div>
         </>
       )}
+      <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-1">
+        {getAfterBeforeImg.length > 0 && actionStatus == "process" &&
+          getAfterBeforeImg.map((data, index) =>
+            <UpdatedImage afterBeforeImage={data} key={index} />
+          )
+        }
+      </div>
     </div>
   );
 }

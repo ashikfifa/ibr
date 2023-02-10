@@ -1,19 +1,17 @@
 import hoody from "./img/hoody.jpg";
 import ViewDwnld from "./ViewDwnld";
 
-const UpdatedImage = () => {
+const UpdatedImage = ({afterBeforeImage}) => {
   return (
     <>
-      <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-1">
         <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
           <a href="#">
-            <img className="rounded-t-lg" src={hoody} alt="" />
+            <img className="rounded-t-lg" src={afterBeforeImage.public_url.output_url} alt="" />
           </a>
           <div className="p-3">
-            <ViewDwnld />
+            <ViewDwnld  imagesBeforeAfter={afterBeforeImage}/>
           </div>
         </div>
-      </div>
     </>
   );
 };
