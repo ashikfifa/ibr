@@ -7,32 +7,32 @@ const PriceCard = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className=" grid grid-cols-3 mt-10 justify-items-center">
-        <div class="w-80 p-4 grid justify-center bg-white shadow-xl border-r-emerald-200 border-r-2 rounded-2xl dark:bg-gray-800">
+      <div className="grid lg:grid lg:grid-cols-3 mt-10 justify-items-center">
+        <div class="w-60 p-4 grid justify-center lg:ml-40 bg-white shadow-xl border-r-yellow-400 border-r-2 rounded-2xl dark:bg-gray-800">
           <p class="text-3xl  text-black text-center dark:text-white">
             Free Account
           </p>
           <p class="mb-4 text-sm text-center  dark:text-gray-300">
-            <BiImage className=" ml-32 -mb-5 mt-6 h-10 w-10"></BiImage> <br />
+            <BiImage className=" ml-20 -mb-5 mt-6 h-10 w-10"></BiImage> <br />
             <span>1 free credit</span>
           </p>
           <p class="mb-4 text-sm text-center  dark:text-gray-300">
-            <BiCodeAlt className="ml-32 h-10 w-10"></BiCodeAlt>
+            <BiCodeAlt className="ml-20 h-10 w-10"></BiCodeAlt>
             <p>50 free previews</p>
             <span>via API and apps per month</span>
           </p>
           <p class="mb-4 text-sm text-center  dark:text-gray-300">
-            <BiBox className="ml-32 -mb-5 h-10 w-10"></BiBox> <br />
+            <BiBox className="ml-20 -mb-5 h-10 w-10"></BiBox> <br />
             <p>Apps for Windows / Mac / Linux</p>
             <span>and Adobe Photoshop</span>
           </p>
           <p class="mb-4 text-sm text-center  dark:text-gray-300">
-            <BiUserVoice className="ml-32 -mb-5 h-10 w-10"></BiUserVoice> <br />
+            <BiUserVoice className="ml-20 -mb-5 h-10 w-10"></BiUserVoice> <br />
             <span>Refer friends and earn credits</span>
           </p>
           <button
             type="button"
-            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-blue-700 rounded-2xl shadow hover:bg-blue-500 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
+            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-400 rounded-2xl shadow hover:bg-yellow-400 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
           >
             Sign Up Free
           </button>
@@ -45,7 +45,7 @@ const PriceCard = () => {
         </div>
 
         {/* 2nd card */}
-        <div class="w-96 relative p-4 grid justify-center bg-white shadow-lg  border-r-emerald-200 border-r-2 rounded-2xl dark:bg-gray-800">
+        <div class="w-96 relative p-4 grid justify-center bg-white shadow-lg  border-r-yellow-400 border-r-2 rounded-2xl dark:bg-gray-800">
           <p class="text-3xl text-center  text-black dark:text-white">
             <p class="ribbon bg-blue-300 text-white text-sm whitespace-no-wrap px-4">
               Premium
@@ -53,7 +53,7 @@ const PriceCard = () => {
             Subscription Plan
           </p>
 
-          <p class="text-3xl text-center font-bold text-blue-500 dark:text-white">
+          <p class="text-3xl text-center font-bold text-yellow-400 dark:text-white">
             $0.20 <span className="text-xs font-thin">/image</span>
           </p>
 
@@ -161,7 +161,7 @@ const PriceCard = () => {
           </ul>
           <button
             type="button"
-            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-blue-700 rounded-2xl shadow hover:bg-blue-500 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
+            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-400 rounded-2xl shadow hover:bg-yellow-400 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
           >
             Subscribe Now
           </button>
@@ -180,13 +180,13 @@ const PriceCard = () => {
           </p>
         </div>
         {/* 3rd card */}
-        <div class="w-80  p-4 grid justify-center bg-white shadow-lg  border-r-emerald-200 border-r-2 rounded-2xl dark:bg-gray-800">
+        <div class="w-80  p-4 grid justify-center lg:mr-20  bg-white shadow-lg  border-r-yellow-400 border-r-2 rounded-2xl dark:bg-gray-800">
           <p class="text-3xl text-center  text-black dark:text-white">
             {" "}
             Pay as you go
           </p>
 
-          <p class="text-3xl text-center font-bold text-blue-500 dark:text-white">
+          <p class="text-3xl text-center font-bold text-yellow-400 dark:text-white">
             $ 0.90 <span className="text-xs font-thin">/image</span>
           </p>
 
@@ -294,7 +294,7 @@ const PriceCard = () => {
           </ul>
           <button
             type="button"
-            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-blue-700 rounded-2xl shadow hover:bg-blue-500 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
+            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-400 rounded-2xl shadow hover:bg-yellow-400 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
           >
             Buy Now
           </button>
