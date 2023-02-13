@@ -29,6 +29,7 @@ function Imageupload() {
     setFileInfo([]);
     setImageShow([]); 
     setLoadProgress(0); 
+    setActionStatus("");
 
     let i = 0; 
     for (const file of newFile) {
@@ -61,19 +62,23 @@ function Imageupload() {
     const fileTypeIs = fileType.type.split("/");
     return fileTypeIs[1];
   }
+ 
 
   const processImagesAi = () => {
-
+    
     toast.success("Items Process Successfully!", {
       position: toast.POSITION.TOP_RIGHT,
     });
     setActionStatus("process");
 
     // let input = fileInfo;
-    const order_id = uniqueOrderId(7);
+    let order_id = uniqueOrderId(7);
 
+    myOwnLoop(order_id)
+    /*
     fileInfo.map((img_file, index) => {
-
+      debugger
+      
       const filePath = img_file.webkitRelativePath;
 
       const imgType = getFileType(img_file);
@@ -86,7 +91,9 @@ function Imageupload() {
       data.append("return_public_url", "True");
       data.append("output_format", "png");
 
-      dataTransfer(data)
+      debugger
+      
+      //dataTransfer(data)
 
       /*
       fetch("http://27.147.191.97:8008/upload", {
@@ -103,18 +110,63 @@ function Imageupload() {
             console.log(err);
           }
         });
-*/
     })
+    */
   };
 
+  
+  const myOwnLoop = (order_id, p = 0) => {
+
+    if (fileInfo.length > p) {
+
+    const img_file = fileInfo[p]; 
+    const filePath = img_file.webkitRelativePath;
+
+    const imgType = getFileType(img_file);
+
+    let data = new FormData();
+    data.append("order_no", order_id);
+    data.append("file_path", "filePath/psdfspd/");
+    data.append("api_key", "Agfd11384HSOTITYH@84584DHFDgsdg3746$$FGDSF7hgdh");
+    data.append("file", img_file);
+    data.append("return_public_url", "True");
+    data.append("output_format", "png");
+    
+    fetch("http://27.147.191.97:8008/upload", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, result]);
+        console.log(result);
+        console.log(p);
+        myOwnLoop(order_id , p + 1)
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+          myOwnLoop(order_id, p + 1)
+        }
+      });
+
+    } else {
+      console.log("have no data avaialble")
+    }
+  }
+
   const dataTransfer = async formData =>{
+    debugger
+
     try {
       const response = await fetch("http://27.147.191.97:8008/upload", {
         method: "POST",
         body: formData
       });
+      debugger
       const data = await response.json();
       setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, data]);
+      console.log(data); 
     } catch (error) {
       console.error(error);
     }
@@ -151,6 +203,17 @@ function Imageupload() {
         accept="image/png"
       />
 
+      {imageShow.length > 0 && actionStatus == "" && 
+      <input
+        onChange={uploadFl}
+        type="file"
+        id="filepicker"
+        name="fileList"
+        directory=""
+        webkitdirectory=""
+        accept="image/png"
+      />
+    }
       {imageShow.length > 0 && actionStatus == "" && (
         <>
           <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-4">

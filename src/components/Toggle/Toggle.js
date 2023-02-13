@@ -2,9 +2,11 @@ import React from "react";
 
 const Toggle = () => {
   return (
-    <div className=" h-10" style={{ backgroundColor: "#e3f2f3" }}>
+    <div className=" h-10 bg-yellow-300">
       <div className="flex justify-center items-center">
-        <p className="  py-2 px-4 text-sm rounded">AI-DRIVEN SERVICES</p>
+        <p className="  py-2 px-4 text-sm font-semibold rounded">
+          AI-DRIVEN SERVICES
+        </p>
 
         <label class="relative inline-flex items-center cursor-pointer">
           <input type="checkbox" value="" class="sr-only peer" />

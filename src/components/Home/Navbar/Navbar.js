@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import imgTrain from "./img/train.svg";
 import "./navbar.css";
@@ -70,7 +71,10 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="/log-in">
-                  <button id="btn-signup" className="rounded-md">
+                  <button
+                    id="btn-signup"
+                    className="rounded-md text-white bg-yellow-300"
+                  >
                     SIGN UP
                   </button>
                 </Link>
