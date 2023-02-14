@@ -7,15 +7,15 @@ const Page3 = () => {
   return (
     <>
       <Navbar />
-      <div class="grid sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-5 gap-1">
-        <div class="...">
+      <div className="grid sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-5 gap-1">
+        <div className="...">
           <Leftsidebar />
         </div>
 
-        <div class="col-span-3 ...">
+        <div className="col-span-3 ...">
           <UpdatedImage />
         </div>
-        <div class="...">
+        <div className="...">
           <Rightsidebar />
         </div>
       </div>

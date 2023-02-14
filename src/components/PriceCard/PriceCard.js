@@ -8,31 +8,31 @@ const PriceCard = () => {
     <div>
       <Navbar></Navbar>
       <div className="grid lg:grid lg:grid-cols-3 mt-10 justify-items-center">
-        <div class="w-60 p-4 grid justify-center lg:ml-40 bg-white shadow-xl border-r-yellow-300 border-r-2 rounded-2xl dark:bg-gray-800">
-          <p class="text-3xl  text-black text-center dark:text-white">
+        <div className="w-60 p-4 grid justify-center lg:ml-40 bg-white shadow-xl border-r-yellow-300 border-r-2 rounded-2xl dark:bg-gray-800">
+          <p className="text-3xl  text-black text-center dark:text-white">
             Free Account
           </p>
-          <p class="mb-4 text-sm text-center  dark:text-gray-300">
+          <p className="mb-4 text-sm text-center  dark:text-gray-300">
             <BiImage className=" ml-20 -mb-5 mt-6 h-10 w-10"></BiImage> <br />
             <span>1 free credit</span>
           </p>
-          <p class="mb-4 text-sm text-center  dark:text-gray-300">
+          <p className="mb-4 text-sm text-center  dark:text-gray-300">
             <BiCodeAlt className="ml-20 h-10 w-10"></BiCodeAlt>
             <p>50 free previews</p>
             <span>via API and apps per month</span>
           </p>
-          <p class="mb-4 text-sm text-center  dark:text-gray-300">
+          <p className="mb-4 text-sm text-center  dark:text-gray-300">
             <BiBox className="ml-20 -mb-5 h-10 w-10"></BiBox> <br />
             <p>Apps for Windows / Mac / Linux</p>
             <span>and Adobe Photoshop</span>
           </p>
-          <p class="mb-4 text-sm text-center  dark:text-gray-300">
+          <p className="mb-4 text-sm text-center  dark:text-gray-300">
             <BiUserVoice className="ml-20 -mb-5 h-10 w-10"></BiUserVoice> <br />
             <span>Refer friends and earn credits</span>
           </p>
           <button
             type="button"
-            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-300 rounded-2xl shadow hover:bg-yellow-300 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
+            className="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-300 rounded-2xl shadow hover:bg-yellow-300 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
           >
             Sign Up Free
           </button>
@@ -45,32 +45,32 @@ const PriceCard = () => {
         </div>
 
         {/* 2nd card */}
-        <div class="w-96 relative p-4 grid justify-center bg-white shadow-lg  border-r-yellow-300 border-r-2 rounded-2xl dark:bg-gray-800">
-          <p class="text-3xl text-center  text-black dark:text-white">
-            <p class="ribbon bg-blue-300 text-white text-sm whitespace-no-wrap px-4">
+        <div className="w-96 relative p-4 grid justify-center bg-white shadow-lg  border-r-yellow-300 border-r-2 rounded-2xl dark:bg-gray-800">
+          <p className="text-3xl text-center  text-black dark:text-white">
+            <p className="ribbon bg-blue-300 text-white text-sm whitespace-no-wrap px-4">
               Premium
             </p>{" "}
             Subscription Plan
           </p>
 
-          <p class="text-3xl text-center font-bold text-yellow-300 dark:text-white">
+          <p className="text-3xl text-center font-bold text-yellow-300 dark:text-white">
             $0.20 <span className="text-xs font-thin">/image</span>
           </p>
 
-          <ul class="w-full mt-6 mb-6 text-sm text-black dark:text-white">
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+          <ul className="w-full mt-6 mb-6 text-sm text-black dark:text-white">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   40 credits / month
                   <p className="text-xs ml-8 mt-2">$ 9</p>
@@ -78,19 +78,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   200 credits / month
                   <p className="text-xs ml-5 mt-2">$ 39</p>
@@ -98,19 +98,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   500 credits / month
                   <p className="text-xs ml-5 mt-2">$ 89</p>
@@ -118,19 +118,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   1,200 credits / month
                   <p className="text-xs ml-2 mt-2">$ 189</p>
@@ -138,19 +138,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   2,800 credits / month
                   <p className="text-xs ml-2 mt-2">$ 389</p>
@@ -161,7 +161,7 @@ const PriceCard = () => {
           </ul>
           <button
             type="button"
-            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-300 rounded-2xl shadow hover:bg-yellow-300 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
+            className="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-300 rounded-2xl shadow hover:bg-yellow-300 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
           >
             Subscribe Now
           </button>
@@ -180,30 +180,30 @@ const PriceCard = () => {
           </p>
         </div>
         {/* 3rd card */}
-        <div class="w-80  p-4 grid justify-center lg:mr-20  bg-white shadow-lg  border-r-yellow-300 border-r-2 rounded-2xl dark:bg-gray-800">
-          <p class="text-3xl text-center  text-black dark:text-white">
+        <div className="w-80  p-4 grid justify-center lg:mr-20  bg-white shadow-lg  border-r-yellow-300 border-r-2 rounded-2xl dark:bg-gray-800">
+          <p className="text-3xl text-center  text-black dark:text-white">
             {" "}
             Pay as you go
           </p>
 
-          <p class="text-3xl text-center font-bold text-yellow-300 dark:text-white">
+          <p className="text-3xl text-center font-bold text-yellow-300 dark:text-white">
             $ 0.90 <span className="text-xs font-thin">/image</span>
           </p>
 
-          <ul class="w-full mt-6 mb-6 text-sm text-black dark:text-white">
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+          <ul className="w-full mt-6 mb-6 text-sm text-black dark:text-white">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   1 credit
                   <p className="text-xs ml-9 mt-2">$ 1.99</p>
@@ -211,19 +211,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   10 credits
                   <p className="text-xs ml-5 mt-2">$ 9</p>
@@ -231,19 +231,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   75 credits
                   <p className="text-xs ml-4 mt-2">$ 49</p>
@@ -251,19 +251,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   200 credits
                   <p className="text-xs ml-2 mt-2">$ 99</p>
@@ -271,19 +271,19 @@ const PriceCard = () => {
                 </label>
               </div>
             </li>
-            <li class="flex items-center mb-3">
-              <div class="flex items-center">
+            <li className="flex items-center mb-3">
+              <div className="flex items-center">
                 <input
                   checked
                   id="default-radio-2"
                   type="radio"
                   value=""
                   name="default-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
                   for="default-radio-2"
-                  class="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
+                  className="ml-2 text-lg font-medium  flex text-gray-900 dark:text-gray-300"
                 >
                   500 credits
                   <p className="text-xs ml-2 mt-2">$ 199</p>
@@ -294,7 +294,7 @@ const PriceCard = () => {
           </ul>
           <button
             type="button"
-            class="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-300 rounded-2xl shadow hover:bg-yellow-300 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
+            className="w-40 px-3 py-3 m-auto text-sm text-black bg-white border border-yellow-300 rounded-2xl shadow hover:bg-yellow-300 hover:text-white dark:hover-text-gray-900 dark:hover:bg-gray-100 "
           >
             Buy Now
           </button>
