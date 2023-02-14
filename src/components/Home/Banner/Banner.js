@@ -3,7 +3,7 @@ import "./banner.css";
 import imgModel from "./img/recolor-02.png";
 const Banner = () => {
   return (
-    <div className="bg-yellow-400" style={{ height: "100vh" }}>
+    <div className="bg-yellow-300" style={{ height: "100vh" }}>
       <div className="container mx-auto ">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div className="..">
@@ -49,16 +49,16 @@ const Banner = () => {
                 </strong>
               </p>
               <div className=" md:flex lg:flex  lg:mt-10 lg:ml-24 lg:gap-5">
-                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
+                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-400   shadow-lg to-yellow-500  hover:translate-y-px">
                   Liquify
                 </button>
-                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
+                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-400   shadow-lg to-yellow-500  hover:translate-y-px">
                   Recolor
                 </button>
-                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
+                <button className="rounded-full h-20 w-20 font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-400   shadow-lg to-yellow-500  hover:translate-y-px">
                   Clipping
                 </button>
-                <button className="rounded-full  h-20 w-20  font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-500   shadow-lg to-yellow-600  hover:translate-y-px">
+                <button className="rounded-full  h-20 w-20  font-semibold bg-emerald-100 text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 border-b-4 border-gray-600 hover:border-b-2 bg-gradient-to-t from-yellow-400   shadow-lg to-yellow-500  hover:translate-y-px">
                   Masking
                 </button>
               </div>

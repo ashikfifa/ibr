@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FileContextManager } from "../../../App";
 import "./style.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import UpdatedImage from "../../Page3/UpdatedImage";
+
+
 
 function Imageupload() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +16,8 @@ function Imageupload() {
   const [actionStatus, setActionStatus] = useState("");
   const [getAfterBeforeImg, setAfterBeforeImg] = useState([]);
   const [LoadProgress, setLoadProgress] = useState(0); 
-
+  const [showImage, setShowImage] = useState(false);
+  const [getOrderInfo, setOrderInfo] = useState({}); 
   const [getMainFile, setMainFile] = useContext(FileContextManager);
   const itemsPerPage = 32;
 
@@ -22,9 +25,12 @@ function Imageupload() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentImages = imageShow.slice(indexOfFirstItem, indexOfLastItem);
 
+  const api_url = "http://27.147.191.97:8008/upload"; 
+  const api_url_py = "http://127.0.0.1:5000/api/upload"; 
+  
   const uploadFl = (e) => {
     const newFile = e.target.files;
-
+    console.log(newFile)
     setMainFile(newFile);
     setFileInfo([]);
     setImageShow([]); 
@@ -72,8 +78,8 @@ function Imageupload() {
     setActionStatus("process");
 
     // let input = fileInfo;
-    let order_id = uniqueOrderId(7);
-
+    let order_id = getOrderInfo && getOrderInfo.order_id;
+    console.log(order_id)
     myOwnLoop(order_id)
     /*
     fileInfo.map((img_file, index) => {
@@ -132,7 +138,7 @@ function Imageupload() {
     data.append("return_public_url", "True");
     data.append("output_format", "png");
     
-    fetch("http://27.147.191.97:8008/upload", {
+    fetch(api_url, {
       method: "POST",
       body: data,
     })
@@ -155,6 +161,7 @@ function Imageupload() {
     }
   }
 
+
   const dataTransfer = async formData =>{
     debugger
 
@@ -172,7 +179,6 @@ function Imageupload() {
     }
 
   }
-  const [showImage, setShowImage] = useState(false);
 
   const handleClose = () => {
     setShowImage(false);
@@ -190,6 +196,26 @@ function Imageupload() {
     setimgUrl(img);
     setShowImage(true);
   };
+
+  const orderInfoFunc = ()=>{
+    const myOrdre = {
+      "menu_id": "2s25-dasd-sadfasdf-asdf-ass", 
+      "operation_type_id": "1245-sdfasdf-sadfasdf-asdf-ass"
+  }
+
+    fetch('http://27.147.191.97:8008/custom-code', {
+      method: 'POST', // or 'PUT'
+      headers: {'Content-Type': 'application/json',},
+      body: JSON.stringify(myOrdre),
+    })
+    .then(res => res.json())
+    .then(data => {setOrderInfo(data)})
+    .catch((error) => {console.error('Error:', error);});
+  }
+
+  useEffect(()=>{
+    orderInfoFunc()
+  },[])
 
   return (
     <div id="middleImageWrap " className="mt-1">
@@ -290,9 +316,9 @@ function Imageupload() {
             </button>
           </div>
           <div className="flex justify-center items-center mb-4 mr-10">
-            <div class=" w-32 h-4 ml-10 bg-gray-200 rounded-full dark:bg-gray-700">
+            <div className=" w-32 h-4 ml-10 bg-gray-200 rounded-full dark:bg-gray-700">
               <div
-                class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
                 style={{ width: `${LoadProgress}%` }}
               >
                 {LoadProgress}%

@@ -62,7 +62,7 @@ const ViewDwnld = ({imagesBeforeAfter}) => {
         </div>
       )}
       <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5">
-        <div class="col-span-3 ...">
+        <div className="col-span-3 ...">
           <BiShow
             className="h-8 w-8 opacity-40"
             onClick={handleViewClick}
