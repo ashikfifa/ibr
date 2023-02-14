@@ -81,8 +81,8 @@ function Imageupload() {
     let order_id = getOrderInfo && getOrderInfo.order_id;
     console.log(order_id)
 
-    dataTransferMyPython(fileInfo)
-   // myOwnLoop(order_id)
+    //dataTransferMyPython(fileInfo)
+     myOwnLoop(order_id)
     /*
     fileInfo.map((img_file, index) => {
       debugger
