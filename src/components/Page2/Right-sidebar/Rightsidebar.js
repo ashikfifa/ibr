@@ -41,7 +41,7 @@ const Rightsidebar = () => {
   }, [])
 
   return (
-    <div>
+    <div className="hfull">
       {console.log(getAiService && getAiService)}
       <button
         data-drawer-target="sidebar-multi-level-sidebar"
@@ -67,11 +67,11 @@ const Rightsidebar = () => {
       </button>
       <aside
         id="logo-sidebar"
-        className=" top-0 right-0 z-1  h-screen  transition-transform -translate-x-full   border-gray-200 sm:translate-x-0 border-opacity-0"
+        className="hfull top-0 right-0 z-1 transition-transform -translate-x-full   border-gray-200 sm:translate-x-0 border-opacity-0"
         aria-label="Sidebar"
       >
         <div id="rightMenuBarWrap"
-          className="h-full  w-36 shadow-2xl ml-24  pb-4 overflow-y-auto "
+          className="hfull  w-36 shadow-2xl ml-24  pb-4 overflow-y-auto "
         // style={{ backgroundColor: "#e3f2f3" }}
         >
           <ul className="space-y-2">

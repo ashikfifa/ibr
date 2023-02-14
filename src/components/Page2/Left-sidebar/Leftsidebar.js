@@ -29,7 +29,7 @@ const Leftsidebar = () => {
   } else {
     return (
       <>
-        <div>
+        <div className="hfull">
           <button
             data-drawer-target="sidebar-multi-level-sidebar"
             data-drawer-toggle="sidebar-multi-level-sidebar"
@@ -54,11 +54,11 @@ const Leftsidebar = () => {
           </button>
           <aside
             id="logo-sidebar"
-            className=" top-0 left-0 z-40 w-64 h-screen  transition-transform -translate-x-full  border-gray-200 sm:translate-x-0 border-opacity-0"
+            className="hfull top-0 left-0 z-40 w-64 transition-transform -translate-x-full  border-gray-200 sm:translate-x-0 border-opacity-0"
             aria-label="Sidebar"
           >
             <div
-              className="w-32  h-full  pb-4  overflow-y-auto shadow-2xl "
+              className="w-32  hfull pb-4  overflow-y-auto shadow-2xl "
             // style={{ backgroundColor: "#e3f2f3" }}
             >
               <div className="leftBarMenuWrap space-y-2">
