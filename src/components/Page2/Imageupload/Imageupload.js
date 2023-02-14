@@ -80,7 +80,9 @@ function Imageupload() {
     // let input = fileInfo;
     let order_id = getOrderInfo && getOrderInfo.order_id;
     console.log(order_id)
-    myOwnLoop(order_id)
+
+    dataTransferMyPython(fileInfo)
+   // myOwnLoop(order_id)
     /*
     fileInfo.map((img_file, index) => {
       debugger
@@ -120,7 +122,28 @@ function Imageupload() {
     */
   };
 
-  
+  const dataTransferMyPython = async data =>{
+    
+    let formData = new FormData();
+    
+    data.forEach((image, index) => {
+      formData.append(`image-${index}`, image);
+    });
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/upload", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+      //setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, data]);
+      console.log(data); 
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+
   const myOwnLoop = (order_id, p = 0) => {
 
     if (fileInfo.length > p) {
@@ -218,7 +241,7 @@ function Imageupload() {
   },[])
 
   return (
-    <div id="middleImageWrap " className="mt-1">
+    <div id="middleImageWrap " className="hfull">
       <input
         onChange={uploadFl}
         type="file"
