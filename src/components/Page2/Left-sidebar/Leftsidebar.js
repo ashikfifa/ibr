@@ -60,38 +60,55 @@ const Leftsidebar = () => {
           </button>
           <aside
             id="logo-sidebar"
-            className="hfull  text-white top-0 left-0 z-40 w-64 transition-transform -translate-x-full  border-gray-200 sm:translate-x-0 border-opacity-0"
+            className="hfull  text-white top-0 left-0 z-40 transition-transform -translate-x-full  border-gray-200 sm:translate-x-0 border-opacity-0"
             aria-label="Sidebar"
           >
-            <div
-              className="w-32  hfull pb-4  overflow-y-auto shadow-2xl bg-black"
-              // style={{ backgroundColor: "#e3f2f3" }}
-            >
-              <div className="leftBarMenuWrap space-y-2">
-                {items.map((item) =>
-                  item.Name == "Folder" ? (
-                    <div key={item.ID}>
+            <div className="w-40  hfull pb-4  overflow-y-auto shadow-2xl bg-black-shade">
+              <div className="leftBarMenuWrap space-y-2 mt-16">
+                {items.map((item) => (
+                  <>
+                    {item.Name == "Folder" && (
+                      <div key={item.ID}>
+                        <div
+                          onClick={() =>
+                            document.querySelector("#filepicker").click()
+                          }
+                          className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:bg-light-black hover:border-r-2 hover:border-r-white"
+                        >
+                          <i className={item.icon}></i> {item.Name}
+                        </div>
+                      </div>
+                    )}
+
+                    {item.Name == "File" && (
                       <div
                         onClick={() =>
-                          document.querySelector("#filepicker").click()
+                          document.querySelector("#singleImagePick").click()
                         }
-                        className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-white hover:bg-gray-100 hover:border-r-2 hover:border-r-yellow-300"
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:bg-light-black hover:border-r-2 hover:border-r-white"
                       >
                         <i className={item.icon}></i> {item.Name}
                       </div>
-                    </div>
-                  ) : (
-                    <div className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-white hover:border-r-2 hover:border-r-yellow-300 hover:bg-gray-100 ">
-                      <i className={item.icon}></i> {item.Name}
-                    </div>
-                  )
-                )}
+                    )}
+
+                    {item.Name == "Clear" && (
+                      <div
+                        onClick={() =>
+                          document.querySelector("#clearData").click()
+                        }
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
+                      >
+                        <i className={item.icon}></i> {item.Name}
+                      </div>
+                    )}
+                  </>
+                ))}
               </div>
               <div
                 onClick={onClickOpenBtn}
-                className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-white hover:border-r-2 hover:border-r-yellow-300 hover:bg-gray-100 "
+                className="leftBarMenu flex items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
               >
-                <i class="fa-regular fa-building w-5 h-5"></i>
+                <i className="fa-regular fa-building w-5 h-5"></i>
                 <p>Maual/Automatic</p>
               </div>
             </div>

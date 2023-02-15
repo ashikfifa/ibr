@@ -11,9 +11,20 @@ export const FileContextManager = createContext();
 
 function App() {
   const [getMainFile, setMainFile] = useState([]);
+  const [fileInfo, setFileInfo] = useState([]);
+  const [getAfterBeforeImg, setAfterBeforeImg] = useState([]);
 
   return (
-    <FileContextManager.Provider value={[getMainFile, setMainFile]}>
+    <FileContextManager.Provider
+      value={[
+        getMainFile,
+        setMainFile,
+        fileInfo,
+        setFileInfo,
+        getAfterBeforeImg,
+        setAfterBeforeImg,
+      ]}
+    >
       <div className="App">
         <Routes>
           {/* <Route path="/" element={<Navigation />} /> */}

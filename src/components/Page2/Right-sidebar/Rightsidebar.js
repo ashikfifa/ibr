@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import './style.css'; 
+import "./style.css";
 
 const Rightsidebar = () => {
   const [checked, setChecked] = useState(true);
@@ -9,18 +9,15 @@ const Rightsidebar = () => {
   const [items, setItems] = useState({});
 
   const aiServiceFun = () => {
-
     fetch("http://27.147.191.97:8008/ai-service")
-      .then(res => res.json())
-      .then(data => {
-        setAiService(data)
+      .then((res) => res.json())
+      .then((data) => {
+        setAiService(data);
       })
-      .catch(err => console.log(err))
-
-  }
+      .catch((err) => console.log(err));
+  };
 
   const menualServiceFun = () => {
-    
     fetch("http://27.147.191.97:8008/manual-service")
       .then((res) => res.json())
       .then(
@@ -34,11 +31,11 @@ const Rightsidebar = () => {
           setError(error);
         }
       );
-  }
+  };
   useEffect(() => {
-    aiServiceFun()
-    menualServiceFun()
-  }, [])
+    aiServiceFun();
+    menualServiceFun();
+  }, []);
 
   return (
     <div className="hfull">
@@ -70,20 +67,21 @@ const Rightsidebar = () => {
         className="hfull top-0 right-0 z-1 transition-transform -translate-x-full   border-gray-200 sm:translate-x-0 border-opacity-0"
         aria-label="Sidebar"
       >
-        <div id="rightMenuBarWrap"
-          className="hfull  w-36 shadow-2xl ml-24  pb-4 overflow-y-auto "
-        // style={{ backgroundColor: "#e3f2f3" }}
+        <div
+          id="rightMenuBarWrap"
+          className="hfull  w-36 shadow-2xl ml-24 bg-black-shade pb-4 overflow-y-auto "
         >
           <ul className="space-y-2">
-            <p className="pl-4 bg-gray-200 py-1 font-semibold">{
-              getAiService && getAiService.Title
-            }</p>
-            {getAiService && getAiService.service_items != undefined &&
-              getAiService.service_items.map((data,index) =>
+            {/* <p className="pl-4 bg-gray-200 py-1 font-semibold">
+              {getAiService && getAiService.Title}
+            </p> */}
+            {getAiService &&
+              getAiService.service_items != undefined &&
+              getAiService.service_items.map((data, index) => (
                 <li key={index}>
-                  <a
+                  {/* <a
                     href="#"
-                    className="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-yellow-300 text-gray-900  #e3f2f3:text-#e3f2f3 hover:bg-gray-100 #e3f2f3:hover:bg-gray-700"
+                    className="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-white text-white #e3f2f3:text-#e3f2f3 hover:bg-light-black #e3f2f3:hover:bg-gray-700 cursor-pointer"
                   >
                     <input
                       type="checkbox"
@@ -94,21 +92,23 @@ const Rightsidebar = () => {
                     <label htmlFor="1" className="ml-3">
                       {data.Name}
                     </label>
-                  </a>
+                  </a> */}
                 </li>
-              )
-            }
-            <p className="pl-4 bg-gray-200 py-1 font-semibold"> {items && items.Title}</p>
+              ))}
+            {/* <p className="pl-4 bg-gray-200 py-1 font-semibold">
+              {" "}
+              {items && items.Title}
+            </p> */}
             {items &&
-                items.service_items != undefined &&
-                items.service_items.map((item) => (
-                  <div key={item.ID}>
-                    <li className="ml-2 text-sm">
-                      <input type="checkbox" checked={item.is_checked} />{" "}
-                      {item.Name}
-                    </li>
-                  </div>
-                ))}
+              items.service_items != undefined &&
+              items.service_items.map((item) => (
+                <div key={item.ID}>
+                  <li className="ml-2 text-sm text-white hover:border-r-2 hover:border-r-white cursor-pointer #e3f2f3:text-#e3f2f3 hover:bg-light-black">
+                    {/* <input type="checkbox" checked={item.is_checked} />{" "}
+                    {item.Name} */}
+                  </li>
+                </div>
+              ))}
           </ul>
         </div>
       </aside>
