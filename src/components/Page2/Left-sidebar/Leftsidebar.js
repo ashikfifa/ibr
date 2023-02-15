@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
-import './style.css';
+import Toggle from "../../Toggle/Toggle";
+import { Modal, Button } from "flowbite-react";
+import "./style.css";
 
 const Leftsidebar = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+
+  const onClickOpenBtn = () => {
+    return <>{console.log("asd")}</>;
+  };
 
   useEffect(() => {
     fetch("http://27.147.191.97:8008/bar-menu/173")
@@ -54,12 +60,12 @@ const Leftsidebar = () => {
           </button>
           <aside
             id="logo-sidebar"
-            className="hfull top-0 left-0 z-40 w-64 transition-transform -translate-x-full  border-gray-200 sm:translate-x-0 border-opacity-0"
+            className="hfull  text-white top-0 left-0 z-40 w-64 transition-transform -translate-x-full  border-gray-200 sm:translate-x-0 border-opacity-0"
             aria-label="Sidebar"
           >
             <div
-              className="w-32  hfull pb-4  overflow-y-auto shadow-2xl "
-            // style={{ backgroundColor: "#e3f2f3" }}
+              className="w-32  hfull pb-4  overflow-y-auto shadow-2xl bg-black"
+              // style={{ backgroundColor: "#e3f2f3" }}
             >
               <div className="leftBarMenuWrap space-y-2">
                 {items.map((item) =>
@@ -69,19 +75,24 @@ const Leftsidebar = () => {
                         onClick={() =>
                           document.querySelector("#filepicker").click()
                         }
-                        className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-gray-900  hover:bg-gray-100 hover:border-r-2 hover:border-r-yellow-300"
+                        className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-white hover:bg-gray-100 hover:border-r-2 hover:border-r-yellow-300"
                       >
                         <i className={item.icon}></i> {item.Name}
                       </div>
                     </div>
                   ) : (
-                    <div
-                      className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-gray-900 hover:border-r-2 hover:border-r-yellow-300 hover:bg-gray-100 "
-                    >
+                    <div className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-white hover:border-r-2 hover:border-r-yellow-300 hover:bg-gray-100 ">
                       <i className={item.icon}></i> {item.Name}
                     </div>
                   )
                 )}
+              </div>
+              <div
+                onClick={onClickOpenBtn}
+                className="leftBarMenu flex items-center p-2 text-base flex-col font-normal text-white hover:border-r-2 hover:border-r-yellow-300 hover:bg-gray-100 "
+              >
+                <i class="fa-regular fa-building w-5 h-5"></i>
+                <p>Maual/Automatic</p>
               </div>
             </div>
           </aside>
