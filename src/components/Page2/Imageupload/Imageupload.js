@@ -6,18 +6,19 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import UpdatedImage from "../../Page3/UpdatedImage";
 
-
-
 function Imageupload() {
+  const [performancePercent, setPerformancePercent] = useState(100);
+  const circumference = 50 * 2 * Math.PI;
+
   const [currentPage, setCurrentPage] = useState(1);
   const [fileInfo, setFileInfo] = useState([]);
   const [imageShow, setImageShow] = useState([]);
   const [imgUrl, setimgUrl] = useState();
   const [actionStatus, setActionStatus] = useState("");
   const [getAfterBeforeImg, setAfterBeforeImg] = useState([]);
-  const [LoadProgress, setLoadProgress] = useState(0); 
+  const [LoadProgress, setLoadProgress] = useState(0);
   const [showImage, setShowImage] = useState(false);
-  const [getOrderInfo, setOrderInfo] = useState({}); 
+  const [getOrderInfo, setOrderInfo] = useState({});
   const [getMainFile, setMainFile] = useContext(FileContextManager);
   const itemsPerPage = 32;
 
@@ -25,36 +26,36 @@ function Imageupload() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentImages = imageShow.slice(indexOfFirstItem, indexOfLastItem);
 
-  const api_url = "http://27.147.191.97:8008/upload"; 
-  const api_url_py = "http://127.0.0.1:5000/api/upload"; 
-  
+  const api_url = "http://27.147.191.97:8008/upload";
+  const api_url_py = "http://127.0.0.1:5000/api/upload";
+
   const uploadFl = (e) => {
     const newFile = e.target.files;
-    console.log(newFile)
+    console.log(newFile);
     setMainFile(newFile);
     setFileInfo([]);
-    setImageShow([]); 
-    setLoadProgress(0); 
+    setImageShow([]);
+    setLoadProgress(0);
     setActionStatus("");
 
-    let i = 0; 
+    let i = 0;
     for (const file of newFile) {
-      i++; 
-      console.log(Math.round((100/newFile.length)*i))
-      setLoadProgress(Math.round((100/newFile.length)*i)); 
+      i++;
+      console.log(Math.round((100 / newFile.length) * i));
+      setLoadProgress(Math.round((100 / newFile.length) * i));
 
       if (file.type == "image/jpeg" || file.type == "image/png") {
         setFileInfo((fileInfo) => [...fileInfo, file]);
         const imageUrl = URL.createObjectURL(file);
         setImageShow((imageShow) => [...imageShow, imageUrl]);
       }
-
     }
   };
 
   const uniqueOrderId = (length) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLength = characters.length;
     let counter = 0;
     while (counter < length) {
@@ -62,16 +63,14 @@ function Imageupload() {
       counter += 1;
     }
     return result;
-  }
+  };
 
   const getFileType = (fileType) => {
     const fileTypeIs = fileType.type.split("/");
     return fileTypeIs[1];
-  }
- 
+  };
 
   const processImagesAi = () => {
-    
     toast.success("Items Process Successfully!", {
       position: toast.POSITION.TOP_RIGHT,
     });
@@ -79,10 +78,8 @@ function Imageupload() {
 
     // let input = fileInfo;
     let order_id = getOrderInfo && getOrderInfo.order_id;
-    console.log(order_id)
-
-    //dataTransferMyPython(fileInfo)
-     myOwnLoop(order_id)
+    console.log(order_id);
+    myOwnLoop(order_id);
     /*
     fileInfo.map((img_file, index) => {
       debugger
@@ -122,86 +119,62 @@ function Imageupload() {
     */
   };
 
-  const dataTransferMyPython = async data =>{
-    
-    let formData = new FormData();
-    
-    data.forEach((image, index) => {
-      formData.append(`image-${index}`, image);
-    });
-
-    try {
-      const response = await fetch("http://127.0.0.1:5000/upload", {
-        method: "POST",
-        body: formData
-      });
-      const data = await response.json();
-      //setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, data]);
-      console.log(data); 
-    } catch (error) {
-      console.error(error);
-    }
-
-  }
-
   const myOwnLoop = (order_id, p = 0) => {
-
     if (fileInfo.length > p) {
+      const img_file = fileInfo[p];
+      const filePath = img_file.webkitRelativePath;
 
-    const img_file = fileInfo[p]; 
-    const filePath = img_file.webkitRelativePath;
+      const imgType = getFileType(img_file);
 
-    const imgType = getFileType(img_file);
+      let data = new FormData();
+      data.append("order_no", order_id);
+      data.append("file_path", "filePath/psdfspd/");
+      data.append("api_key", "Agfd11384HSOTITYH@84584DHFDgsdg3746$$FGDSF7hgdh");
+      data.append("file", img_file);
+      data.append("return_public_url", "True");
+      data.append("output_format", "png");
 
-    let data = new FormData();
-    data.append("order_no", order_id);
-    data.append("file_path", "filePath/psdfspd/");
-    data.append("api_key", "Agfd11384HSOTITYH@84584DHFDgsdg3746$$FGDSF7hgdh");
-    data.append("file", img_file);
-    data.append("return_public_url", "True");
-    data.append("output_format", "png");
-    
-    fetch(api_url, {
-      method: "POST",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, result]);
-        console.log(result);
-        console.log(p);
-        myOwnLoop(order_id , p + 1)
+      fetch(api_url, {
+        method: "POST",
+        body: data,
       })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-          myOwnLoop(order_id, p + 1)
-        }
-      });
-
+        .then((res) => res.json())
+        .then((result) => {
+          setAfterBeforeImg((getAfterBeforeImg) => [
+            ...getAfterBeforeImg,
+            result,
+          ]);
+          console.log(result);
+          console.log(p);
+          myOwnLoop(order_id, p + 1);
+        })
+        .catch((err) => {
+          if (err) {
+            console.log(err);
+            myOwnLoop(order_id, p + 1);
+          }
+        });
     } else {
-      console.log("have no data avaialble")
+      console.log("have no data avaialble");
     }
-  }
+  };
 
-
-  const dataTransfer = async formData =>{
-    debugger
+  const dataTransfer = async (formData) => {
+    debugger;
 
     try {
       const response = await fetch("http://27.147.191.97:8008/upload", {
         method: "POST",
-        body: formData
+        body: formData,
       });
-      debugger
+      debugger;
       const data = await response.json();
-      setAfterBeforeImg(getAfterBeforeImg => [...getAfterBeforeImg, data]);
-      console.log(data); 
+      setAfterBeforeImg((getAfterBeforeImg) => [...getAfterBeforeImg, data]);
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
-
-  }
+  };
 
   const handleClose = () => {
     setShowImage(false);
@@ -220,28 +193,32 @@ function Imageupload() {
     setShowImage(true);
   };
 
-  const orderInfoFunc = ()=>{
+  const orderInfoFunc = () => {
     const myOrdre = {
-      "menu_id": "2s25-dasd-sadfasdf-asdf-ass", 
-      "operation_type_id": "1245-sdfasdf-sadfasdf-asdf-ass"
-  }
+      menu_id: "2s25-dasd-sadfasdf-asdf-ass",
+      operation_type_id: "1245-sdfasdf-sadfasdf-asdf-ass",
+    };
 
-    fetch('http://27.147.191.97:8008/custom-code', {
-      method: 'POST', // or 'PUT'
-      headers: {'Content-Type': 'application/json',},
+    fetch("http://27.147.191.97:8008/custom-code", {
+      method: "POST", // or 'PUT'
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(myOrdre),
     })
-    .then(res => res.json())
-    .then(data => {setOrderInfo(data)})
-    .catch((error) => {console.error('Error:', error);});
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        setOrderInfo(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
-  useEffect(()=>{
-    orderInfoFunc()
-  },[])
+  useEffect(() => {
+    orderInfoFunc();
+  }, []);
 
   return (
-    <div id="middleImageWrap " className="hfull">
+    <div id="middleImageWrap " className="mt-1">
       <input
         onChange={uploadFl}
         type="file"
@@ -252,17 +229,17 @@ function Imageupload() {
         accept="image/png"
       />
 
-      {imageShow.length > 0 && actionStatus == "" && 
-      <input
-        onChange={uploadFl}
-        type="file"
-        id="filepicker"
-        name="fileList"
-        directory=""
-        webkitdirectory=""
-        accept="image/png"
-      />
-    }
+      {imageShow.length > 0 && actionStatus == "" && (
+        <input
+          onChange={uploadFl}
+          type="file"
+          id="filepicker"
+          name="fileList"
+          directory=""
+          webkitdirectory=""
+          accept="image/png"
+        />
+      )}
       {imageShow.length > 0 && actionStatus == "" && (
         <>
           <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-4">
@@ -338,7 +315,7 @@ function Imageupload() {
               Next
             </button>
           </div>
-          <div className="flex justify-center items-center mb-4 mr-10">
+          {/* <div className="flex justify-center items-center mb-4 mr-10">
             <div className=" w-32 h-4 ml-10 bg-gray-200 rounded-full dark:bg-gray-700">
               <div
                 className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
@@ -347,25 +324,68 @@ function Imageupload() {
                 {LoadProgress}%
               </div>
             </div>
-          </div>
+          </div> */}
+          {/*------- process bar----------- */}
+          <div className="flex">
+            <div className="grid grid-cols-1 mt-10  gap-20 w-96 lg:grid-cols-2 lg:gap-10">
+              <div className="flex items-center flex-wrap max-w-md px-10 bg-white shadow-2xl rounded-xl border-2 border-blue-600 h-16">
+                <div className="flex items-center justify-center -m-4 overflow-hidden bg-white rounded-full">
+                  <svg
+                    className="w-16 h-16 transform translate-x-1 translate-y-1"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      className="text-gray-300"
+                      strokeWidth="3"
+                      stroke="currentColor"
+                      fill="transparent"
+                      r="20"
+                      cx="30"
+                      cy="30"
+                    />
+                    <circle
+                      className="text-blue-600"
+                      strokeWidth="3"
+                      strokeDasharray={circumference}
+                      strokeDashoffset={
+                        circumference -
+                        (performancePercent / 100) * circumference
+                      }
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                      fill="transparent"
+                      r="20"
+                      cx="30"
+                      cy="30"
+                    />
+                  </svg>
+                  <span className="absolute text-xs text-blue-700">{`${performancePercent}%`}</span>
+                </div>
+                <p className="ml-10 font-medium text-md text-gray-600 sm:text-sm">
+                  Complete
+                </p>
+              </div>
+            </div>
 
-          <div className="flex justify-center items-center">
-            <button
-              onClick={processImagesAi}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Process
-            </button>
-            <ToastContainer />
+            <div className="flex justify-center items-center">
+              <button
+                onClick={processImagesAi}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Process
+              </button>
+              <ToastContainer />
+            </div>
           </div>
         </>
       )}
+
       <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-1">
-        {getAfterBeforeImg.length > 0 && actionStatus == "process" &&
-          getAfterBeforeImg.map((data, index) =>
+        {getAfterBeforeImg.length > 0 &&
+          actionStatus == "process" &&
+          getAfterBeforeImg.map((data, index) => (
             <UpdatedImage afterBeforeImage={data} key={index} />
-          )
-        }
+          ))}
       </div>
     </div>
   );

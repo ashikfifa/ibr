@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import imgTrain from "./img/train.svg";
+import logo from "../../../images/makeup.png";
 import "./navbar.css";
 
 const Navbar = () => {
@@ -34,6 +35,9 @@ const Navbar = () => {
       <nav className="bg-white border-gray-200 px-2 sm:px-4 shadow-md rounded light:bg-gray-900">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <Link to="/" className="flex items-center">
+            <span>
+              <img className="h-6 w-6 mr-2" src={logo} alt="" />
+            </span>
             <span className="self-center text-xl font-semibold whitespace-nowrap light:text-white">
               Retouch.ai
             </span>
@@ -74,8 +78,10 @@ const Navbar = () => {
                     </button>
                   </Link>
                 ) : (
-                  <Link to="#">
-                    <div key={item.ID}>{item.Name}</div>
+                  <Link to={item.Url}>
+                    <button className="rounded-md text-black w-20 py-1 hover:bg-slate-900 hover:text-white">
+                      <div key={item.ID}>{item.Name}</div>
+                    </button>
                   </Link>
                 )
               )}
