@@ -3,7 +3,7 @@ import "./banner.css";
 import imgModel from "./img/recolor-02.png";
 const Banner = () => {
   return (
-    <div className="bg-yellow-300" style={{ height: "100vh" }}>
+    <div className=" bg-light-black" style={{ height: "100vh" }}>
       <div className="container mx-auto ">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div className="..">
