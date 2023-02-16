@@ -6,6 +6,7 @@ import Login from "./components/Signup/Login";
 import { Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
 import PriceCard from "./components/PriceCard/PriceCard";
+import LostPassword from "./components/Signup/LostPassword";
 
 export const FileContextManager = createContext();
 
@@ -13,6 +14,7 @@ function App() {
   const [getMainFile, setMainFile] = useState([]);
   const [fileInfo, setFileInfo] = useState([]);
   const [getAfterBeforeImg, setAfterBeforeImg] = useState([]);
+  const [getLockMenuBool, setLockMenuBool] = useState(false);
 
   return (
     <FileContextManager.Provider
@@ -23,6 +25,8 @@ function App() {
         setFileInfo,
         getAfterBeforeImg,
         setAfterBeforeImg,
+        getLockMenuBool,
+        setLockMenuBool,
       ]}
     >
       <div className="App">
@@ -33,7 +37,7 @@ function App() {
           <Route path="/file-uploads" element={<Page2 />} />
           <Route path="/processed-img" element={<Page3 />} />
           <Route path="/log-in" element={<Login />} />
-
+          <Route path="/lost-password" element={<LostPassword />} />
           <Route path="/sign-up" element={<Signup />} />
         </Routes>
       </div>

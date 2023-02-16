@@ -72,14 +72,14 @@ const Rightsidebar = () => {
           className="hfull  w-36 shadow-2xl ml-24 bg-black-shade pb-4 overflow-y-auto "
         >
           <ul className="space-y-2">
-            {/* <p className="pl-4 bg-gray-200 py-1 font-semibold">
+            <p className="pl-4 bg-gray-200 py-1 font-semibold">
               {getAiService && getAiService.Title}
-            </p> */}
+            </p>
             {getAiService &&
               getAiService.service_items != undefined &&
               getAiService.service_items.map((data, index) => (
                 <li key={index}>
-                  {/* <a
+                  <a
                     href="#"
                     className="flex items-center p-2 text-base font-normal hover:border-r-2 hover:border-r-white text-white #e3f2f3:text-#e3f2f3 hover:bg-light-black #e3f2f3:hover:bg-gray-700 cursor-pointer"
                   >
@@ -90,22 +90,27 @@ const Rightsidebar = () => {
                       id="1"
                     />
                     <label htmlFor="1" className="ml-3">
-                      {data.Name}
+                      {/* {data.Name}{" "} */}
+                      {data.Name == "Remove Background"}
+                      <img
+                        className="h-10 w-10"
+                        src={require("./img/Icon For Services-01.png")}
+                      />
                     </label>
-                  </a> */}
+                  </a>
                 </li>
               ))}
-            {/* <p className="pl-4 bg-gray-200 py-1 font-semibold">
+            <p className="pl-4 bg-gray-200 py-1 font-semibold">
               {" "}
               {items && items.Title}
-            </p> */}
+            </p>
             {items &&
               items.service_items != undefined &&
               items.service_items.map((item) => (
                 <div key={item.ID}>
                   <li className="ml-2 text-sm text-white hover:border-r-2 hover:border-r-white cursor-pointer #e3f2f3:text-#e3f2f3 hover:bg-light-black">
-                    {/* <input type="checkbox" checked={item.is_checked} />{" "}
-                    {item.Name} */}
+                    <input type="checkbox" checked={item.is_checked} />{" "}
+                    {item.Name}
                   </li>
                 </div>
               ))}

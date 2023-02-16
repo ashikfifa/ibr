@@ -60,7 +60,7 @@ const Leftsidebar = () => {
             aria-label="Sidebar"
           >
             <div className="w-40  hfull pb-4  overflow-y-auto shadow-2xl bg-black-shade">
-              <div className="leftBarMenuWrap space-y-2 mt-16">
+              <div className="leftBarMenuWrap space-y-2 ">
                 {items.map((item) => (
                   <>
                     {item.Name == "Folder" && (

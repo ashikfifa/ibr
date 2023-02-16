@@ -9,6 +9,7 @@ import processlogo from "./img/process.png";
 
 function Imageupload() {
   const [performancePercent, setPerformancePercent] = useState(100);
+  const [numImages, setNumImages] = useState(0);
   const circumference = 50 * 2 * Math.PI;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,6 +21,7 @@ function Imageupload() {
   const [LoadProgress, setLoadProgress] = useState(0);
   const [showImage, setShowImage] = useState(false);
   const [getOrderInfo, setOrderInfo] = useState({});
+  const [getFilterText, setFilterText] = useState("");
   const [
     getMainFile,
     setMainFile,
@@ -27,12 +29,14 @@ function Imageupload() {
     setFileInfo,
     getAfterBeforeImg,
     setAfterBeforeImg,
+    getLockMenuBool,
+    setLockMenuBool,
   ] = useContext(FileContextManager);
-  const itemsPerPage = 32;
+  const itemsPerPage = 8;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentImages = imageShow.slice(indexOfFirstItem, indexOfLastItem);
+  const currentImages = fileInfo.slice(indexOfFirstItem, indexOfLastItem);
 
   const api_url = "http://27.147.191.97:8008/upload";
   const api_url_py = "http://127.0.0.1:5000/api/upload";
@@ -60,20 +64,21 @@ function Imageupload() {
 
   const uploadFile = (e) => {
     const newFile = e.target.files;
-    console.log(newFile);
+    //console.log(newFile);
+    const numFiles = e.target.files.length;
+    setNumImages(numFiles);
 
     setMainFile(newFile);
     //setFileInfo([]);
     // setImageShow([]);
     setLoadProgress(0);
     setActionStatus("");
-    console.log();
 
     let i = 0;
     for (const file of newFile) {
       i++;
 
-      console.log(file);
+      // console.log(file);
       setLoadProgress(Math.round((100 / newFile.length) * i));
 
       // check file type
@@ -82,24 +87,26 @@ function Imageupload() {
           // check if the images is already exits
           const foundFile = fileInfo.find(
             (fl) =>
-              fl.lastModified === file.lastModified &&
-              fl.name === file.name &&
-              fl.size === file.size &&
-              fl.type === file.type
+              fl.file.lastModified === file.lastModified &&
+              fl.file.name === file.name &&
+              fl.file.size === file.size &&
+              fl.file.type === file.type
           );
 
           if (foundFile) {
             console.log("The file already exists in the array.");
           } else {
-            setFileInfo((fileInfo) => [...fileInfo, file]);
             const imageUrl = URL.createObjectURL(file);
-            setImageShow((imageShow) => [...imageShow, imageUrl]);
+            const fileObject = { file: file, imageUrl: imageUrl };
+            setFileInfo((fileInfo) => [...fileInfo, fileObject]);
+            // setImageShow((imageShow) => [...imageShow, imageUrl]);
             console.log("The file does not exist in the array.");
           }
         } else {
-          setFileInfo((fileInfo) => [...fileInfo, file]);
           const imageUrl = URL.createObjectURL(file);
-          setImageShow((imageShow) => [...imageShow, imageUrl]);
+          const fileObject = { file: file, imageUrl: imageUrl };
+          setFileInfo((fileInfo) => [...fileInfo, fileObject]);
+          // setImageShow((imageShow) => [...imageShow, imageUrl]);
         }
       }
     }
@@ -147,24 +154,26 @@ function Imageupload() {
     }, timeout);
   }
 
-  const checkAiProccesDone = () => {
+  const checkAiProccesDone = (getAfterBeforeImg) => {
     if (getAfterBeforeImg.length > 0) {
       getAfterBeforeImg.map((data, index) => {
         if (data.result[0].is_ai_processed == false) {
-          testImage(data.result[0].output_public_url, myCallback);
-
           const myCallback = (result) => {
             if (result == "success") {
-              console.log(result);
+              // console.log(result);
               getAfterBeforeImg[index].result[0].is_ai_processed = true;
             }
           };
+
+          testImage(data.result[0].output_public_url, myCallback);
+        } else {
+          //  console.log("true")
         }
       });
 
       console.log("statusIs " + getAfterBeforeImg.length);
     } else {
-      console.log("none");
+      //console.log("none")
     }
   };
 
@@ -173,7 +182,7 @@ function Imageupload() {
       position: toast.POSITION.TOP_RIGHT,
     });
     setActionStatus("process");
-
+    setLockMenuBool(true);
     // let input = fileInfo;
     let order_id = getOrderInfo && getOrderInfo.order_id;
     let unique_custom_code = getOrderInfo && getOrderInfo.unique_custom_code;
@@ -185,13 +194,13 @@ function Imageupload() {
     fileInfo.map((img_file, index) => {
       //console.log(img_file)
 
-      const filePath = img_file.webkitRelativePath;
-      const imgType = getFileType(img_file);
+      const filePath = img_file.file.webkitRelativePath;
+      const imgType = getFileType(img_file.file);
 
       let data = new FormData();
       data.append("order_id", order_id);
       data.append("unique_custom_code", unique_custom_code);
-      data.append("file", img_file);
+      data.append("file", img_file.file);
       data.append("file_relative_path", "filePath/psdfspd");
       /*
       data.append("file_path", "filePath/psdfspd");
@@ -298,6 +307,18 @@ function Imageupload() {
     }
   };
 
+  const filterFunc = (e) => {
+    e.preventDefault();
+
+    if (e.target.value.length > 0) {
+      console.log(e.target.value);
+      setFilterText(e.target.value);
+      setActionStatus("filter");
+    } else {
+      setActionStatus("");
+    }
+  };
+
   const clearData = () => {
     setMainFile([]);
     setFileInfo([]);
@@ -307,6 +328,7 @@ function Imageupload() {
     setActionStatus("");
     setCurrentPage(1);
     orderInfoFunc();
+    setLockMenuBool(false);
   };
 
   const handleClose = () => {
@@ -326,20 +348,25 @@ function Imageupload() {
     setShowImage(true);
   };
 
-  const deletImage = () => {
-    //setImageShow(imageShow.filter(f => f !== folder));
-
+  const deletImage = (dlImage) => {
+    console.log(dlImage);
+    setFileInfo(fileInfo.filter((f) => f.imageUrl !== dlImage));
     handleClose();
   };
 
+  var x = 0;
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      console.log(getAfterBeforeImg);
-    }, 10000);
-    orderInfoFunc();
+    setInterval(() => {
+      checkAiProccesDone(getAfterBeforeImg);
+    }, 20000);
+    //checkAiProccesDone()
+    x++;
+
+    x > 0 && orderInfoFunc();
 
     //return () => clearInterval(interval)
-  }, []);
+  });
 
   return (
     <>
@@ -348,6 +375,8 @@ function Imageupload() {
         <p class="text-white mr-4">Filter</p>
         <div class="relative">
           <input
+            onChange={filterFunc}
+            maxLength={200}
             type="text"
             class="block w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 px-5 py-2 pr-48 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Filter File or Folder"
@@ -368,8 +397,7 @@ function Imageupload() {
           </div>
         </div>
       </div>
-
-      <div id="middleImageWrap " className="mt-9">
+      <div id="middleImageWrap " className="mt-1">
         {
           //  console.log(getAfterBeforeImg)
         }
@@ -393,33 +421,39 @@ function Imageupload() {
         />
 
         <button className="hidden" id="clearData" onClick={clearData}></button>
-        {imageShow.length > 0 && actionStatus == "" && (
+        {fileInfo.length > 0 && actionStatus == "" && (
           <>
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-8 gap-4 relative">
+            <div
+              className={`grid sm:grid-cols-1 md:grid-cols-${
+                fileInfo.length > 3 ? "4" : fileInfo.length
+              }  lg:grid-cols-${
+                fileInfo.length > 5 ? "4" : fileInfo.length
+              } gap-4`}
+            >
               {currentImages.map((image, index) => (
                 <div key={index}>
                   <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
                     <div
-                      onClick={() => viewImg(image)}
+                      onClick={() => viewImg(image.imageUrl)}
                       style={{
-                        backgroundImage: `url(${image})`,
+                        backgroundImage: `url(${image.imageUrl})`,
                         backgroundSize: "cover",
                         backgroundRepeat: "no-repeat",
                         width: "100%",
                         cursor: "pointer",
-                        height: "80px",
+                        height: fileInfo.length < 5 ? "380px" : "180px",
                       }}
                     />
                     {showImage && (
                       <div
                         style={{
-                          position: " fixed",
+                          position: " absolute",
                           top: 0,
                           left: 0,
                           right: 0,
                           bottom: 0,
                           zIndex: 9,
-                          background: "rgba(0, 0, 0, 0.5)",
+                          background: "#111111",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -432,7 +466,10 @@ function Imageupload() {
                             maxHeight: "100%",
                           }}
                         />
-                        <div className="p-1 rounded-full cursor-pointer -mt-80 bg-white ">
+                        <div
+                          onClick={() => deletImage(imgUrl)}
+                          className="p-1 rounded-full cursor-pointer -mt-80 bg-white "
+                        >
                           <i class="fa-regular fa-trash-can w-8 h-8  justify-center"></i>
                         </div>
                         <button
@@ -455,6 +492,142 @@ function Imageupload() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className=" absolute bg-light-black w-3/4  bottom-0">
+              {/* progress bar */}
+
+              <div className=" grid grid-cols-1 md:grid-cols-5">
+                <div className="...">
+                  <div className=" w-32 h-4 ml-10 mt-5 bg-gray-200 rounded-full dark:bg-gray-700">
+                    <div
+                      className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                      style={{ width: `${LoadProgress}%` }}
+                    >
+                      {LoadProgress}%
+                    </div>
+                    <p className="text-white text-center text-xs">Complete</p>
+                  </div>
+                </div>
+
+                <div className=" col-span-3">
+                  {/* Previous button */}
+
+                  <button
+                    disabled={currentPage === 1}
+                    className="cursor-pointer text-white"
+                    onClick={previousPage}
+                  >
+                    <i class="fa-solid fa-arrow-left mr-7"></i>
+                  </button>
+                  {/* Process */}
+                  <div className="">
+                    <img
+                      src={processlogo}
+                      onClick={processImagesAi}
+                      className="bg-white hover:bg-blue-500 hover:text-white w-12 h-12 text-center text-black text-xs font-bold  rounded-full"
+                    />
+
+                    <ToastContainer />
+                  </div>
+                  {/* Next Button */}
+                  <button
+                    disabled={
+                      currentPage === Math.ceil(imageShow.length / itemsPerPage)
+                    }
+                    className="cursor-pointer text-white"
+                    onClick={nextPage}
+                  >
+                    <i className="fa-solid fa-arrow-right ml-7"></i>
+                  </button>
+                </div>
+
+                {/* Image/total count */}
+                <div className="...">
+                  <div className="text-white text-sm">
+                    <p>Image Count : {numImages}</p>
+                    <p>Total Bill :</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {fileInfo.length > 0 && actionStatus == "filter" && (
+          <>
+            <div
+              className={`grid sm:grid-cols-1 md:grid-cols-${
+                fileInfo.length > 3 ? "4" : fileInfo.length
+              }  lg:grid-cols-${
+                fileInfo.length > 5 ? "4" : fileInfo.length
+              } gap-4`}
+            >
+              {currentImages.map(
+                (image, index) =>
+                  image.file.webkitRelativePath.indexOf(getFilterText) > 0 && (
+                    <div key={index}>
+                      <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
+                        <div
+                          onClick={() => viewImg(image.imageUrl)}
+                          style={{
+                            backgroundImage: `url(${image.imageUrl})`,
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat",
+                            width: "100%",
+                            cursor: "pointer",
+                            height: fileInfo.length < 5 ? "380px" : "180px",
+                          }}
+                        />
+                        {showImage && (
+                          <div
+                            style={{
+                              position: " fixed",
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              zIndex: 9,
+                              background: "rgba(0, 0, 0, 0.5)",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <img
+                              src={imgUrl}
+                              style={{
+                                maxWidth: "100%",
+                                maxHeight: "100%",
+                              }}
+                            />
+                            <div
+                              onClick={() => deletImage(imgUrl)}
+                              className="p-1 rounded-full cursor-pointer -mt-80 bg-white "
+                            >
+                              <i class="fa-regular fa-trash-can w-8 h-8  justify-center"></i>
+                            </div>
+                            <button
+                              onClick={handleClose}
+                              style={{
+                                position: "relative",
+                                top: "-43%",
+                                right: 0,
+                                background: "white",
+                                border: "none",
+                                padding: "10px 15px",
+                                borderRadius: "50%",
+                                cursor: "pointer",
+                              }}
+                            >
+                              X
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )
+              )}
             </div>
 
             <div className="flex absolute bg-light-black w-3/4  bottom-0">
@@ -506,6 +679,12 @@ function Imageupload() {
             </div>
           </>
         )}
+
+        {/*
+          getAfterBeforeImg.length > 0 &&
+          actionStatus == "filter" &&
+          <FilterFile/>
+          */}
 
         <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-1">
           {getAfterBeforeImg.length > 0 &&
