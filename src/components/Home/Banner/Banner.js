@@ -1,15 +1,33 @@
 import { Link } from "react-router-dom";
 import "./banner.css";
-import imgModel from "./img/recolor-02.png";
+import { FaFacebookSquare, FaLinkedin, FaTwitter } from "react-icons/fa";
+
 const Banner = () => {
   return (
     <div className=" bg-light-black" style={{ height: "100vh" }}>
       <div className="container mx-auto ">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          <div className="..">
-            <div style={{ position: "" }}>
-              {" "}
-              <img src={imgModel} alt="model" />
+          <div className="h-60 w-96 text-white  ml-20 mt-10">
+            <div className="flex">
+              <p className="text-4xl mr-5 font-semibold">Retouch.ai</p>
+              <p>
+                <i class="fa-solid mt-4 fa-location-dot"></i> Dhaka,Bangladesh
+              </p>
+            </div>
+            <p className="mt-3">Best Photo Retouching Services</p>
+            <div className="flex mt-3 ">
+              <button className="rounded-md mr-4 bg-white hover:bg-blue-500 hover:text-white text-black text-sm px-2">
+                Follow
+              </button>
+              <button>
+                <FaFacebookSquare className="h-6 w-6 mr-1 hover:text-blue-500"></FaFacebookSquare>
+              </button>
+              <button>
+                <FaTwitter className="h-6 w-6 mr-1 hover:text-blue-500"></FaTwitter>
+              </button>
+              <button>
+                <FaLinkedin className="h-6 w-6 hover:text-blue-500"></FaLinkedin>
+              </button>
             </div>
           </div>
           <div className="..">
