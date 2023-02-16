@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import hoody from "./img/hoody.jpg";
 import { BiShow, BiDownload } from "react-icons/bi";
 import ReactCompareImage from "react-compare-image";
 import "./page3.css";
 
-
-const ViewDwnld = ({imagesBeforeAfter}) => {
+const ViewDwnld = ({ imagesBeforeAfter }) => {
   const [isImageVisible, setImageVisibility] = useState(false);
-  const before = imagesBeforeAfter.public_url.input_url; 
-
-  const after = imagesBeforeAfter.public_url.output_url; 
+  const before = imagesBeforeAfter.result[0].compressed_public_url;
+  const after = imagesBeforeAfter.result[0].output_public_url;
+  const isProcess = imagesBeforeAfter.result[0].is_ai_processed;
 
   const handleViewClick = () => {
     setImageVisibility(true);
@@ -21,6 +20,7 @@ const ViewDwnld = ({imagesBeforeAfter}) => {
     document.body.style.overflow = "unset";
   };
 
+  useEffect(() => {}, [imagesBeforeAfter]);
 
   return (
     <div>
@@ -61,20 +61,22 @@ const ViewDwnld = ({imagesBeforeAfter}) => {
           </button>
         </div>
       )}
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5">
-        <div className="col-span-3 ...">
-          <BiShow
-            className="h-8 w-8 opacity-40"
-            onClick={handleViewClick}
-            style={{ cursor: "pointer" }}
-          ></BiShow>
+      {isProcess && (
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5">
+          <div className="col-span-3 ...">
+            <BiShow
+              className="h-8 w-8 opacity-40"
+              onClick={handleViewClick}
+              style={{ cursor: "pointer" }}
+            ></BiShow>
+          </div>
+          <div className="...">
+            <a href={after} download>
+              <BiDownload className="h-7 w-7 opacity-40"></BiDownload>
+            </a>
+          </div>
         </div>
-        <div className="...">
-          <a href={after} download>
-            <BiDownload className="h-7 w-7 opacity-40"></BiDownload>
-          </a>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

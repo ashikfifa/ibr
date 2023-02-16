@@ -8,17 +8,13 @@ const Leftsidebar = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  const onClickOpenBtn = () => {
-    return <>{console.log("asd")}</>;
-  };
-
   useEffect(() => {
     fetch("http://27.147.191.97:8008/bar-menu/173")
       .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result.menu_list);
+          setItems(result.side_bar_menu_items);
         },
 
         (error) => {
@@ -91,6 +87,58 @@ const Leftsidebar = () => {
                       </div>
                     )}
 
+                    {item.Name == "URL" && (
+                      <div
+                        onClick={() => document.querySelector("#").click()}
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
+                      >
+                        <i className={item.icon}></i> {item.Name}
+                      </div>
+                    )}
+
+                    {item.Name == "FTP" && (
+                      <div
+                        onClick={() => document.querySelector("#").click()}
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
+                      >
+                        <i className={item.icon}></i> {item.Name}
+                      </div>
+                    )}
+
+                    {item.Name == "AI/Manual" && (
+                      <div
+                        onClick={() => document.querySelector("#").click()}
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
+                      >
+                        <i className={item.icon}></i> {item.Name}
+                      </div>
+                    )}
+                    {item.Name == "Subscription" && (
+                      <div
+                        onClick={() => document.querySelector("#").click()}
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
+                      >
+                        <i className={item.icon}></i> {item.Name}
+                      </div>
+                    )}
+                    {item.Name == "Offer/Coupon" && (
+                      <div
+                        onClick={() => document.querySelector("#").click()}
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
+                      >
+                        <i className={item.icon}></i> {item.Name}
+                      </div>
+                    )}
+
+                    {item.Name == "Filter" && (
+                      <div
+                        onClick={() => document.querySelector("#").click()}
+                        className="leftBarMenu  items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
+                      >
+                        <i className={item.icon}></i> {item.Name}
+                      </div>
+                    )}
+
                     {item.Name == "Clear" && (
                       <div
                         onClick={() =>
@@ -103,13 +151,6 @@ const Leftsidebar = () => {
                     )}
                   </>
                 ))}
-              </div>
-              <div
-                onClick={onClickOpenBtn}
-                className="leftBarMenu flex items-center p-2 text-base font-normal text-white hover:border-r-2 hover:border-r-white hover:bg-light-black "
-              >
-                <i className="fa-regular fa-building w-5 h-5"></i>
-                <p>Maual/Automatic</p>
               </div>
             </div>
           </aside>
